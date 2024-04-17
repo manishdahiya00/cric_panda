@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="fs-5">Id</th>
+    <th scope="col" class="fs-5">Paytm Number</th>
+    <th scope="col" class="fs-5">Campaign Name</th>
+    <th scope="col" class="fs-5">Referral Code</th>
+    <th scope="col" class="fs-5">Created At</th>
+    <th scope="col" class="fs-5">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @affiliates.each do |aff| %>
+    <tr>
+      <th class="fs-5">
+        <a href="/affiliates/<%= aff.id %>"><%= aff.id %></a>
+      </th>
+      <td class="fs-5"><%= aff.paytm_number %></td>
+      <td class="fs-5"><%= aff.campaign_name %></td>
+      <td class="fs-5"><%= aff.referral_code %></td>
+      <td class="fs-5"><%= aff.created_at.strftime('%d/%m/%y %I:%M:%S %p') %></td>
+      <td class="fs-5"><%= link_to "Edit",edit_affiliate_path(aff),class:"btn btn-dark"  %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

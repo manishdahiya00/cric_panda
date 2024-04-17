@@ -1,0 +1,35 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="fs-5">Id</th>
+    <th scope="col" class="fs-5">Image</th>
+    <th scope="col" class="fs-5">Offer Name</th>
+    <th scope="col" class="fs-5">Identifier</th>
+    <th scope="col" class="fs-5">PayAmt/RefAmt</th>
+    <th scope="col" class="fs-5">Status</th>
+    <th scope="col" class="fs-5">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @app_offers.each do |app_offer| %>
+    <tr>
+      <th class="fs-5">
+        <a href="/app_offers/<%= app_offer.id %>"><%= app_offer.id %></a>
+      </th>
+      <td><%= image_tag app_offer.image_url,style: "width:80px" %></td>
+      <td class="fs-5"><%= app_offer.offer_name %></td>
+      <td class="fs-5"><%= app_offer.identifier %></td>
+      <td class="fs-5"><%= app_offer.payout_amount %> / <%= app_offer.refer_amount%></td>
+      <td class="fs-5">
+        <% if app_offer.status %>
+          <i class="fa-solid fa-check text-success fs-3" ></i>
+        <% else %>
+          <i class="fa-solid fa-xmark text-danger fs-3" ></i>
+        <% end %>
+      </td>
+      <td><%= link_to "Edit", edit_app_offer_path(app_offer),class:"btn bg-dark text-light"%>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

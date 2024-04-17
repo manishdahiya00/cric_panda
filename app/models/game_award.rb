@@ -1,0 +1,2 @@
+class GameAward < ApplicationRecord
+end

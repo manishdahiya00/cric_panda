@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offer_name: MyString
+  identifier: MyString
+  description: MyText
+  instructions: MyText
+  payout_amount: MyString
+  retention_offer: false
+  retention_amount: MyString
+  retention_day: MyString
+  action_url: MyString
+  refer_amount: MyString
+  image_url: MyString
+  daily_cap: 1
+  status: false
+  whatsapp_link: MyString
+  event_offer: false
+  priority: 1
+  insta_offer: false
+
+two:
+  offer_name: MyString
+  identifier: MyString
+  description: MyText
+  instructions: MyText
+  payout_amount: MyString
+  retention_offer: false
+  retention_amount: MyString
+  retention_day: MyString
+  action_url: MyString
+  refer_amount: MyString
+  image_url: MyString
+  daily_cap: 1
+  status: false
+  whatsapp_link: MyString
+  event_offer: false
+  priority: 1
+  insta_offer: false

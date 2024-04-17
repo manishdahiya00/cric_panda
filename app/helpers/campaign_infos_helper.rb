@@ -1,0 +1,2 @@
+module CampaignInfosHelper
+end

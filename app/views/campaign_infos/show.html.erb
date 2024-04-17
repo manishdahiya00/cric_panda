@@ -1,0 +1,74 @@
+<%= stylesheet_link_tag "admin" %>
+<nav class="navbar px-5 me-5">
+  <h2>Admin Dashboard</h2>
+  <a href="/app_offers"><%= image_tag "user.png",style: "width:50px" %></a>
+</nav>
+<hr/>
+<div class="main">
+  <div class="px-4">
+    <%= render "shared/sidebar" %>
+  </div>
+  <div class="main-content container">
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+    <div class="d-lg-flex justify-content-start align-items-center gap-3">
+      <%= link_to "Back", campaign_infos_path,class:"btn btn-dark fw-medium" %>
+      <h1><%= @campaign_info.title %></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Title</label>
+          <h2 class="form-control"><%= @campaign_info.title %></h2>
+        </div>
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Redirect Url</label>
+          <h2 class="form-control"><%= @campaign_info.redirect_url %></h2>
+        </div>
+
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">AMount</label>
+          <h2 class="form-control"><%= @campaign_info.amount %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Offer Steps</label>
+          <h2 class="form-control"><%= @campaign_info.offer_steps %></h2>
+        </div>
+        <div class="d-lg-flex gap-3 mt-4">
+          <div class="form-group p-2 d-flex align-items-center gap-2">
+            <label class="form-check-label" for="exampleCheck1">Status</label>
+            <input disabled type="checkbox" class="form-check-input" id="exampleCheck1" <%= @campaign_info.status ? 'checked' : '' %> >
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Terms & Conditions</label>
+          <h2 class="form-control"><%= @campaign_info.terms_n_condition %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Identifier</label>
+          <h2 class="form-control"><%= @campaign_info.identifier %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Source</label>
+          <h2 class="form-control"><%= @campaign_info.source %></h2>
+        </div>
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Publisher</label>
+          <h2 class="form-control"><%= @campaign_info.publisher %></h2>
+        </div>
+      </div>
+    </div>
+    <div class="form-group p-2 mt-4">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to "Edit", edit_campaign_info_path , class: "btn btn-dark text-light fw-medium me-3" %>
+      </div>
+    </div>
+  </div>
+</div>

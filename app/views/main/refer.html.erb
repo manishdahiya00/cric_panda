@@ -1,0 +1,63 @@
+<%= javascript_include_tag 'copyLink.js' %>
+<%= render partial: "navbar" %>
+<div>
+  <div class="refer-container">
+  <%= image_tag "winassure.png",class:"refer" %>
+    </div>
+  <div class="refer-line h-5 d-flex justify-content-center pt-4 pb-2 fs-4 fw-medium">
+    <p>Hey Refer and Earn Paytm Cashback</p>
+  </div>
+    <div class="fs-4 fw-bold ms-3 mt-2 ">
+      Hello, Dear Friend
+    </div>
+    <hr class="ms-3"/>
+    <div class="fs-6 ms-3 fw-medium">
+      Complete the Yowhatsapp task from my refer link and you will get 5 paytm cash in your paytm wallet instantly.
+  </div>
+  <hr class="ms-3"/>
+  <div class="fs-6 ms-3 fw-normal">
+    Referral Code: <span class="fs-5 fw-medium"><%= @referral_code %></span>
+  </div>
+  <hr class="ms-3"/>
+   <div class="ms-3 fw-medium">
+      <p>Click on link sponsored by CricPanda:</p>
+        <a href="/refer">https://cricpanda.in/campoffer?ref=<%= @referral_code %>&camp=<%= @offer_name %></a>
+  </div>
+  <hr class="ms-3"/>
+   <div class="ms-3 mt-2 ">
+     <p class="fs-6 fw-bold"> Steps to earn : </p>
+      <ul>
+        <li class="fs-6 fw-medium">On Successfully initial you get Rs. 3</li>
+      </ul>
+    </div>
+    <div class="link-container ms-3">
+       <p class="fs-6 fw-bold">Click on below link:</p>  
+       <div class="text-center link-container-child">
+        <a id="referLink" href="/refer/" class="border p-2">https://cricpanda.in/campoffer?ref=<%= @referral_code %>&camp=<%= @offer_name %></a>
+        </div>
+    </div>
+  <hr class="ms-3"/>
+<div class="bg-body-secondary btn-container">
+  <button id="copyBtn" class="btn btn-success fw-medium btn-refer">Copy Link</button>
+  <button class="btn btn-danger fw-medium text-light btn-refer">Invite on Whatsapp</button>
+</div>
+  <hr class="ms-3"/>
+<div class="border shadow-lg youtube-container">
+<p class="fs-5 fw-medium mt-3">Want To Know more. Check Us On:</p>
+<a href="https://www.youtube.com/watch?v=7uEPK1lAnN4"><%= image_tag "youtube-gif.gif",class:"yt-gif"%></a>
+</div>
+  <hr class="ms-3"/>
+ <div class="payout-container">
+   <%= image_tag "payout.png" ,class:"payout-img"%>
+</div>
+ </div>
+<%= render partial: "footer" %>
+<a href="https://chat.whatsapp.com/GnBtyrHozEH9oyo6hA4GwM" class="whatsapp">
+  <%= image_tag "whatsapp.png",style: "width:60px" %>
+</a>
+<a href="https://t.me/s/EarnMoreEarnBig" class="telegram">
+  <%= image_tag "telegram.png",style: "width:60px" %>
+</a>
+<a href="https://www.youtube.com/watch?v=7uEPK1lAnN4&feature=youtu.be" class="youtube">
+  <%= image_tag "youtube.png",style: "width:60px" %>
+</a>

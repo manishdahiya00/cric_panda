@@ -1,0 +1,71 @@
+<%= javascript_include_tag "offer.js" %>
+<%= render partial: "navbar" %>
+<div class="container d-flex flex-wrap flex-lg-nowrap justify-content-center align-items-center gap-3 p-2">
+  <%= image_tag @app_offer.image_url, class:"img-thumbnail" %>
+  <%= form_with model: Referrer, url: referrers_path, class: "w-100 mt-0 ms-2", id: "offer-form" do |form| %>
+      <%= form.hidden_field :app_offer_id,class:"form-control" ,value:params["app_offer_id"]%>
+    <div class="mb-3">
+      <%= form.label :paytm_number, class:"form-label fs-4 fw-medium" %>
+      <%= form.telephone_field :paytm_number,class:"form-control", placeholder:"Enter Your Phone Number", :required => true ,id:"paytm_number" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :upi_id, class:"form-label fs-4 fw-medium" %>
+      <%= form.text_field :upi_id,class:"form-control", placeholder:"Enter Your Valid UPI Id",:required => true ,id:"upi_id"%>
+    </div>
+    <div class="mb-3 d-flex justify-content-center captcha">
+      <div class="g-recaptcha" data-error-callback="Captcha is Required"  data-sitekey="<%= ENV['RECAPTCHA_SITE_KEY'] %>" aria-required="true"></div>
+    </div>
+    <div class="d-flex flex-column">
+      <%= form.submit "Complete Offer", class:"btn btn-success fs-4" %>
+    </div>
+    <br/>
+   <%= form_with(model: Affiliate) do |form| %>
+      <submit class="d-flex flex-column">
+        <a href="/refer/<%= @app_offer.id %>?ref_code=<%= @referral_code %>&camp=<%= @app_offer.offer_name %>" target="_parent" class="btn btn-success fs-4 refer-btn">Refer And Earn <%= image_tag "refer and earn.png", style: "width:35px" %></a>
+      </submit>
+    <% end %>
+  <% end %>
+</div>
+<div class="container d-flex">
+  <div class="alert alert-offer fw-medium mt-3 w-100 h-25 me-2" role="alert">
+    Install & Register the <%= @app_offer.offer_name %>
+  </div>
+  <div class="alert alert-amount fw-medium mt-3 h-25 w-25" role="alert">
+  Rs.  <%= @app_offer.payout_amount %>
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="download d-flex justify-content-center">
+    <p class="fw-medium">Download And Install this app and win More Rewards</p>
+  </div>
+  <div class="d-flex flex-column mt-5 ms-4 align-items-center border p-2">
+    <p class="fs-4 fw-bold">Offer Terms And Conditions</p>
+    <ul class="list-group list-group-numbered">
+      <li class="list-group-item border-0">
+        Offer valid only once per User/UPI-Id/IP address and Device.
+      </li>
+      <li class="list-group-item border-0">
+        Multiple registrations from the same user/UPI-Id/IP address, similar looking usernames and e-mail IDs and Device will not be paid.
+      </li>
+      <li class="list-group-item border-0">
+        Use only Real Indian Mobile Numbers and genuine mail ID to register in the app.
+      </li>
+      <li class="list-group-item border-0">
+        Merchant verifies your account, if they find any Duplicate or Suspicious transaction, then your cashback may get rejected.
+      </li>
+      <li class="list-group-item border-0">
+        Any query related to Cashback will be entertained by CricPanda Team. Write an email to apphelpmg@gmail.com
+      </li>
+    </ul>
+  </div>
+</div>
+<%= render partial: "footer" %>
+<a href="https://chat.whatsapp.com/GnBtyrHozEH9oyo6hA4GwM" class="whatsapp">
+  <%= image_tag "whatsapp.png",style: "width:60px" %>
+</a>
+<a href="https://t.me/s/EarnMoreEarnBig" class="telegram">
+  <%= image_tag "telegram.png",style: "width:60px" %>
+</a>
+<a href="https://www.youtube.com/watch?v=7uEPK1lAnN4&feature=youtu.be" class="youtube">
+  <%= image_tag "youtube.png",style: "width:60px" %>
+</a>

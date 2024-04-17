@@ -1,0 +1,2 @@
+module AppBannersHelper
+end

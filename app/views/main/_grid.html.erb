@@ -1,0 +1,15 @@
+<div class="offers">
+  <div class="row mb-5 mt-0 row-gap-4">
+    <% @app_offers.each do |app_offer| %>
+      <div class="col-lg-3 col-md-4 mb-4 col-sm-6 col-6">
+        <a href="/offers/<%= app_offer.id %>" target="_parent" class="card m-auto text-decoration-none" >
+          <%= image_tag app_offer.image_url %>
+          <div class="card-body">
+            <h4 class="card-text"><%= app_offer.offer_name %></h4>
+            <h6>Amount: <%= app_offer.payout_amount %></h6>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>

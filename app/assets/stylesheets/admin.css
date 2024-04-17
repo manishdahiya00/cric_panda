@@ -1,7 +1,6 @@
 li{
     list-style: none;
 }
-
 .edit-save-btn{
     background-color: #820263;
     border: none;
@@ -28,7 +27,6 @@ li{
 }
 .main-content{
     margin-right: 5vw;
-    height: 200dvh;
 }
 .sidebar{
     position: sticky;

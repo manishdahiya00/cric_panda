@@ -1,14 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Referrers</h1>
-
-<div id="referrers">
-  <% @referrers.each do |referrer| %>
-    <%= render referrer %>
-    <p>
-      <%= link_to "Show this referrer", referrer %>
-    </p>
-  <% end %>
+<%= stylesheet_link_tag "admin" %>
+<nav class="navbar px-5 me-5">
+  <h2>Admin Dashboard</h2>
+  <a href="/app_offers"><%= image_tag "user.png",style: "width:50px" %></a>
+</nav>
+<hr/>
+<div class="main">
+  <div class="px-4">
+    <%= render "shared/sidebar" %>
+  </div>
+  <div class="main-content">
+    <% if notice %>
+      <div class="alert alert-danger" role="alert"><%= notice %></div>
+    <% end %>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="mb-4">Listing Referrers</h1>
+    </div>
+    <div>
+      <%= render "referrer" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New referrer", new_referrer_path %>

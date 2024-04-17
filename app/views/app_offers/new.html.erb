@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag "admin" %>
+<nav class="navbar px-5 me-5">
+  <h2>Admin Dashboard</h2>
+  <a href="/app_offers"><%= image_tag "user.png",style: "width:50px" %></a>
+</nav>
+<hr/>
+<div class="main">
+  <div class="px-4">
+    <%= render "shared/sidebar" %>
+  </div>
+  <div class="main-content container">
+    <p style="color: green"><%= notice %></p>
+<div class="d-flex justify-content-start gap-3">
+  <div class="ms-2 mt-2">
+    <%= link_to "Back", app_offers_path,class:"btn btn-dark fw-medium" %>
+  </div>
+  <h1 class="mb-4">New App Offer</h1>
+
+</div>
+    <div class="d-flex justify-content-between align-items-center">
+      <%= render "form", app_offer: @app_offer %>
+    </div>
+  </div>
+</div>
+

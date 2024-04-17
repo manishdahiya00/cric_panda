@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "admin" %>
+<nav class="navbar px-5 me-5">
+  <h2>Admin Dashboard</h2>
+  <a href="/app_offers"><%= image_tag "user.png",style: "width:50px" %></a>
+</nav>
+<hr/>
+<div class="main">
+  <div class="px-4">
+    <%= render "shared/sidebar" %>
+  </div>
+  <div class="main-content container">
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+    <div class="d-lg-flex justify-content-start align-items-center gap-3">
+      <%= link_to "Back", affiliates_path,class:"btn btn-dark fw-medium" %>
+      <h1><%= @affiliate.id %></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group p-2 w-50">
+          <label class="control-label fs-5 fw-medium">Id</label>
+          <h2 class="form-control"><%= @affiliate.id %></h2>
+        </div>
+
+        <div class="form-group p-2 w-50">
+          <label class="control-label fs-5 fw-medium">Paytm Number</label>
+          <h2 class="form-control"><%= @affiliate.paytm_number %></h2>
+        </div>
+        <div class="form-group p-2 w-50">
+          <label class="control-label fs-5 fw-medium">Referral Code</label>
+          <h2 class="form-control"><%= @affiliate.referral_code %></h2>
+        </div>
+        <div class="form-group p-2 w-50">
+          <label class="control-label fs-5 fw-medium">Created At</label>
+          <h2 class="form-control"><%= @affiliate.created_at.strftime('%d/%m/%y %H:%M:%S %p') %></h2>
+        </div>
+      </div>
+    </div>
+    <div class="form-group p-2 mt-4">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to "Edit", edit_affiliate_path , class: "btn btn-dark text-light fw-medium me-3" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  affiliate_id: 1
+  paytm_number: MyString
+  source_ip: MyString
+  click_id: MyString
+  live_offer_id: 1
+  app_offer_id: 1
+  aff_status: false
+  ref_status: false
+  aff_order_id: MyString
+  aff_pay_response: MyText
+  ref_pay_response: MyText
+  upi_id: MyString
+  telegram_id: MyString
+
+two:
+  affiliate_id: 1
+  paytm_number: MyString
+  source_ip: MyString
+  click_id: MyString
+  live_offer_id: 1
+  app_offer_id: 1
+  aff_status: false
+  ref_status: false
+  aff_order_id: MyString
+  aff_pay_response: MyText
+  ref_pay_response: MyText
+  upi_id: MyString
+  telegram_id: MyString

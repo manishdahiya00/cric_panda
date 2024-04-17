@@ -1,0 +1,2 @@
+class AppOffer < ApplicationRecord
+end

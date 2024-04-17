@@ -1,0 +1,270 @@
+body {
+  overflow-x: hidden;
+  margin-right: -2vw;
+}
+a {
+  text-decoration: none;
+}
+.nav {
+  background-color: #820263;
+  color: white;
+  width: 100vw;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.footer {
+  width: 100vw;
+  background-color: #820263;
+}
+.alert-offer{
+  background-color: #820263;
+  color: white;
+  font-size: 18px;
+}
+.alert-amount{
+   background-color: #820263;
+   color: white;
+   font-size: 16px;
+ }
+
+.whatsapp {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+}
+.telegram {
+  position: fixed;
+  right: 10px;
+  bottom: 120px;
+}
+.youtube {
+  position: fixed;
+  right: 10px;
+  bottom: 220px;
+}
+.img-thumbnail {
+  width: 400px;
+  margin-right: 100px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.offers {
+  margin-top: -40px;
+}
+.refer-btn {
+  background-color: #0081c9;
+  border: none;
+}
+.refer-btn:hover {
+  background-color: #0b8ed5;
+}
+.refer-btn:active {
+  background-color: #0b8ed5;
+}
+.image {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  border: 5px solid rgb(127, 127, 127);
+}
+#carouselExample {
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.carousel-control-prev {
+  margin-left: 20vw;
+}
+.carousel-control-next {
+  margin-right: 20vw;
+}
+.carousel-inner {
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.carousel-item {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+.carousel-item img {
+  max-width: 100%;
+  width: 50vw;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.refer-line {
+  width: 105vw;
+  color: white;
+  background-color: #820263;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.card img {
+  width: 250px;
+}
+.card-body h4 {
+  font-size: 24px;
+}
+.refer-container {
+  display: flex;
+  justify-content: center;
+}
+.refer {
+  width: 40vw;
+}
+.link-container-child {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+.btn-refer {
+  width: 20vw;
+  margin: 20px;
+  justify-content: center;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3vw;
+  margin-right: 5vw;
+}
+.youtube-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  margin-left: 3vw;
+  margin-right: 5vw;
+}
+.yt-gif {
+  width: 180px;
+}
+.payout-img {
+  width: 96vw;
+  margin-left: 1.5vw;
+  margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 560px) {
+  .img-thumbnail {
+    width: 150px;
+    margin-right: 0px;
+  }
+  #carouselExample {
+    margin: -40px auto;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 5px;
+  }
+  .card {
+    width: 150px;
+    height: auto;
+  }
+  .card img {
+    width: 150px;
+  }
+  .card-body h4 {
+    font-size: 14px;
+  }
+  #carouselExample {
+    margin-top: 100px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .carousel {
+    margin-top: 10px;
+    margin-left: 5.5vw;
+  }
+  .indicators {
+    position: absolute;
+    top: 200px;
+    margin-left: 90px;
+  }
+  .carousel-control-prev {
+    margin-left: -2vw;
+  }
+  .carousel-control-next {
+    margin-right: -2vw;
+  }
+  .carousel-item img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  .nav {
+    width: 105vw;
+  }
+  .footer {
+    width: 105vw;
+  }
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+  .refer {
+    width: 105vw !important;
+  }
+  .link-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .link-container-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 4vw;
+  }
+  .btn-refer {
+    width: 50vw;
+    margin: 20px;
+  }
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 8vw;
+  }
+  .youtube-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6vw;
+    padding: 2vw;
+  }
+  .yt-gif {
+    width: 100px;
+  }
+  .payout-img {
+    width: 100vw;
+    margin-left: 2.5vw;
+  }
+}

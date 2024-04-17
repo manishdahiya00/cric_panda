@@ -1,67 +1,64 @@
-<div id="<%= dom_id referrer %>">
-  <p>
-    <strong>Affiliate:</strong>
-    <%= referrer.affiliate_id %>
-  </p>
-
-  <p>
-    <strong>Paytm number:</strong>
-    <%= referrer.paytm_number %>
-  </p>
-
-  <p>
-    <strong>Source ip:</strong>
-    <%= referrer.source_ip %>
-  </p>
-
-  <p>
-    <strong>Click:</strong>
-    <%= referrer.click_id %>
-  </p>
-
-  <p>
-    <strong>Live offer:</strong>
-    <%= referrer.live_offer_id %>
-  </p>
-
-  <p>
-    <strong>App offer:</strong>
-    <%= referrer.app_offer_id %>
-  </p>
-
-  <p>
-    <strong>Aff status:</strong>
-    <%= referrer.aff_status %>
-  </p>
-
-  <p>
-    <strong>Ref status:</strong>
-    <%= referrer.ref_status %>
-  </p>
-
-  <p>
-    <strong>Aff order:</strong>
-    <%= referrer.aff_order_id %>
-  </p>
-
-  <p>
-    <strong>Aff pay response:</strong>
-    <%= referrer.aff_pay_response %>
-  </p>
-
-  <p>
-    <strong>Ref pay response:</strong>
-    <%= referrer.ref_pay_response %>
-  </p>
-
-  <p>
-    <strong>Upi:</strong>
-    <%= referrer.upi_id %>
-  </p>
-
-  <p>
-    <strong>Telegram:</strong>
-    <%= referrer.telegram_id %>
-  </p>
-
-</div>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="fs-5">Id</th>
+    <th scope="col" class="fs-5">Paytm No.</th>
+    <th scope="col" class="fs-5">Upi Id</th>
+    <th scope="col" class="fs-5">Affiliate Id</th>
+    <th scope="col" class="fs-5">Click Id</th>
+    <th scope="col" class="fs-5">Offer</th>
+    <th scope="col" class="fs-5">Status</th>
+    <th scope="col" class="fs-5">Created At</th>
+    <th scope="col" class="fs-5">Ation</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @referrers.each do |referrer| %>
+    <tr>
+      <th class="fs-5">
+        <a href="/referrers/<%= referrer.id %>"><%= referrer.id %></a>
+      </th>
+      <td class="fs-5">
+        <%= referrer.paytm_number %>
+      </td>
+      <td class="fs-5">
+        <%= referrer.upi_id %>
+      </td>
+      <td class="fs-5">
+        <%= referrer.affiliate_id %>
+      </td>
+      <td class="fs-5">
+        <%= referrer.click_id %>
+      <td class="fs-5">
+        <% if referrer.app_offer_id %>
+          <% app_offer = @app_offers.find_by(id: referrer.app_offer_id) %>
+          <% if app_offer %>
+            <a href="/app_offers/<%= app_offer.id %>">
+              <%= app_offer.offer_name %>
+            </a>
+          <% else %>
+            Offer Not Found
+          <% end %>
+        <% else %>
+          No App Offer ID
+        <% end %>
+      </td>
+      <td class="fs-5">
+        <% if referrer.ref_status %>
+          <i class="fa-solid fa-check text-success fs-3" ></i>
+        <% else %>
+          <i class="fa-solid fa-xmark text-danger fs-3" ></i>
+        <% end %>
+      </td>
+     <td class="fs-5">
+       <%= referrer.created_at.strftime('%d/%m/%Y') %>
+       &nbsp;
+       <%= referrer.created_at.strftime('%I:%M:%S %p') %>
+     </td>
+      <td class="fs-5">
+        <%= link_to "Edit",edit_referrer_path(referrer),class:"btn btn-dark" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
