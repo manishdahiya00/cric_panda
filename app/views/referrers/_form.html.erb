@@ -1,0 +1,82 @@
+<%= form_with(model: referrer) do |form| %>
+  <% if referrer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(referrer.errors.count, "error") %> prohibited this referrer from being saved:</h2>
+
+      <ul>
+        <% referrer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :affiliate_id, style: "display: block" %>
+    <%= form.number_field :affiliate_id %>
+  </div>
+
+  <div>
+    <%= form.label :paytm_number, style: "display: block" %>
+    <%= form.text_field :paytm_number %>
+  </div>
+
+  <div>
+    <%= form.label :source_ip, style: "display: block" %>
+    <%= form.text_field :source_ip %>
+  </div>
+
+  <div>
+    <%= form.label :click_id, style: "display: block" %>
+    <%= form.text_field :click_id %>
+  </div>
+
+  <div>
+    <%= form.label :live_offer_id, style: "display: block" %>
+    <%= form.number_field :live_offer_id %>
+  </div>
+
+  <div>
+    <%= form.label :app_offer_id, style: "display: block" %>
+    <%= form.number_field :app_offer_id %>
+  </div>
+
+  <div>
+    <%= form.label :aff_status, style: "display: block" %>
+    <%= form.check_box :aff_status %>
+  </div>
+
+  <div>
+    <%= form.label :ref_status, style: "display: block" %>
+    <%= form.check_box :ref_status %>
+  </div>
+
+  <div>
+    <%= form.label :aff_order_id, style: "display: block" %>
+    <%= form.text_field :aff_order_id %>
+  </div>
+
+  <div>
+    <%= form.label :aff_pay_response, style: "display: block" %>
+    <%= form.text_area :aff_pay_response %>
+  </div>
+
+  <div>
+    <%= form.label :ref_pay_response, style: "display: block" %>
+    <%= form.text_area :ref_pay_response %>
+  </div>
+
+  <div>
+    <%= form.label :upi_id, style: "display: block" %>
+    <%= form.text_field :upi_id %>
+  </div>
+
+  <div>
+    <%= form.label :telegram_id, style: "display: block" %>
+    <%= form.text_field :telegram_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Referrers</h1>
+
+<div id="referrers">
+  <% @referrers.each do |referrer| %>
+    <%= render referrer %>
+    <p>
+      <%= link_to "Show this referrer", referrer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New referrer", new_referrer_path %>

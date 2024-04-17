@@ -1,0 +1,66 @@
+li{
+    list-style: none;
+}
+
+.edit-save-btn{
+    background-color: #820263;
+    border: none;
+    width: 20dvw;
+    font-size: 1.2rem;
+}
+.edit-save-btn:hover,
+.edit-save-btn:active {
+    background-color: #b64e9b !important;
+}
+.edit-back-btn{
+    border: none;
+    font-size: 1.2rem;
+    width: 20dvw;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.main{
+    display: grid;
+    grid-template-columns: 20vw auto;
+}
+.main-content{
+    margin-right: 5vw;
+    height: 200dvh;
+}
+.sidebar{
+    position: sticky;
+    top: 0;
+    font-size: 20px;
+    border-right: 2px solid gray;
+}
+.list-item{
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 18px;
+    border-radius: 10px;
+}
+.list-item:hover{
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 560px){
+    .edit-heading{
+        margin-left: 20px;
+    }
+    .edit-save-btn{
+        border: none;
+        font-size: 1.2rem;
+        width: 60dvw;
+        margin-left: 20px;
+    }
+    .edit-back-btn{
+        border: none;
+        font-size: 1.2rem;
+        width: 60dvw;
+        margin-left: 20px;
+
+    }
+}
