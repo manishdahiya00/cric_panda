@@ -1,5 +1,7 @@
 class ReferrersController < ApplicationController
 
+  layout  "admin"
+
   before_action :set_referrer, only: %i[ show edit update]
 
   def index
@@ -19,7 +21,8 @@ class ReferrersController < ApplicationController
 
   def create
     @referrer = Referrer.new(referrer_params)
-
+    @app_offer_id = params[:app_offer_id]
+    @refer_code = session[:referral_code]
       if @referrer.save
         redirect_to refer_path, notice: "Referrer was successfully created."
       else

@@ -9,10 +9,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto d-flex flex-row justify-content-center">
         <li class="nav-item">
-          <a class="nav-link" href="#" aria-disabled="true">
-            <%= image_tag "wallet.png", style: "width:45px" %>
-            <p class="fw-bold text-light">Wallet</p>
-          </a>
+            <a class="nav-link" href="/profile/" aria-disabled="true">
+              <%= image_tag "wallet.png", style: "width:45px" %>
+              <p class="fw-bold text-light">Wallet</p>
+            </a>
+          <%= google_sign_in_button 'Sign in with my Google account',create_login_path,:method => :post %>
         </li>
       </ul>
     </div>

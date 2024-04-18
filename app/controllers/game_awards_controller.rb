@@ -1,4 +1,7 @@
 class GameAwardsController < ApplicationController
+
+  layout  "admin"
+
   before_action :set_game_award, only: %i[ show edit update destroy ]
   def index
     @game_awards = GameAward.all

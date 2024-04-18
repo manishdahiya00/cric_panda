@@ -1,19 +1,15 @@
 <div id="carouselExampleInterval" class="carousel slide carousel-fade w-100" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <% @app_banners.each_with_index do |_, index| %>
+      <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="<%= index %>" class="<%= "active" if index.zero? %>  aria-current="<%= "true" if index.zero? %>"  aria-label="Slide <%= index + 1 %>"></button>
+    <% end %>
   </div>
   <div class="carousel-inner">
-    <a href="https://chat.whatsapp.com/GnBtyrHozEH9oyo6hA4GwM" class="carousel-item active" data-bs-interval="2000">
-      <%= image_tag "carousel1.png", class:"image" %>
-    </a>
-    <a href="/refer" class="carousel-item" data-bs-interval="2000">
-      <%= image_tag "carousel2.png" ,class:"image" %>
-    </a>
-    <a href="https://t.me/s/EarnMoreEarnBig" class="carousel-item" data-bs-interval="2000">
-      <%= image_tag "carousel3.png",class:"image" %>
-    </a>
+    <% @app_banners.each_with_index do |app_banner, index| %>
+      <a href="<%= app_banner.redirect_url %>" class="carousel-item <%= 'active' if index.zero? %>" data-bs-interval="2000">
+        <%= image_tag app_banner.image_url, class: "image" %>
+      </a>
+    <% end %>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

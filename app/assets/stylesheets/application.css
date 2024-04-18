@@ -64,6 +64,10 @@ a {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   border: 5px solid rgb(127, 127, 127);
 }
+.referral_images{
+  width: 400px;
+}
+
 #carouselExample {
   padding: 10px;
   margin-top: 20px;
@@ -98,6 +102,12 @@ a {
 .refer-line {
   width: 105vw;
   color: white;
+  background-color: #820263;
+}
+.referral-line{
+  font-size: 25px;
+  color: white;
+  width: 105vw;
   background-color: #820263;
 }
 .row {
@@ -153,6 +163,15 @@ a {
   margin-left: 3vw;
   margin-right: 5vw;
 }
+.terms-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2vw;
+  margin-right: 4vw;
+  margin-bottom: 10px;
+  padding: 2vw;
+}
 .yt-gif {
   width: 180px;
 }
@@ -161,15 +180,45 @@ a {
   margin-left: 1.5vw;
   margin-bottom: 10px;
 }
-
-
+.table-container{
+  width: 50%;
+}
+.form-container{
+  width: 50%;
+}
+.main-conatiner{
+  padding: 2vw;
+  border: 2px solid #820263;
+  margin-top: 2vw;
+  margin-left: 3vw;
+  margin-right: 5vw;
+}
 @media screen and (max-width: 560px) {
   .img-thumbnail {
     width: 150px;
     margin-right: 0px;
   }
+  .main-conatiner{
+    padding: 2vw;
+    border: 2px solid #820263;
+    margin-top: 2vw;
+    margin-left: 3vw;
+  }
+  .form-container{
+    width: 100%;
+  }
   #carouselExample {
     margin: -40px auto;
+  }
+  .profile-container{
+    margin-left: 3vw;
+    padding: 10px;
+  }
+  .referral-line{
+    font-size: 18px;
+    color: white;
+    width: 105vw;
+    background-color: #820263;
   }
   .row {
     display: flex;
@@ -180,6 +229,9 @@ a {
   .card {
     width: 150px;
     height: auto;
+  }
+  .table-container{
+    width: auto;
   }
   .card img {
     width: 150px;
@@ -194,6 +246,9 @@ a {
     position: relative;
     overflow: hidden;
   }
+  .profile-card{
+    width: 100%;
+  }
   .carousel {
     margin-top: 10px;
     margin-left: 5.5vw;
@@ -202,6 +257,9 @@ a {
     position: absolute;
     top: 200px;
     margin-left: 90px;
+  }
+  .referral_images{
+    width: 200px;
   }
   .carousel-control-prev {
     margin-left: -2vw;
@@ -254,6 +312,13 @@ a {
     margin-left: 8vw;
   }
   .youtube-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6vw;
+    padding: 2vw;
+  }
+  .terms-container{
     display: flex;
     justify-content: center;
     align-items: center;

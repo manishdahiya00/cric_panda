@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :articles
-  resources :app_banners
-  resources :game_awards
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "main#index"
@@ -9,9 +7,17 @@ Rails.application.routes.draw do
   post "/offers/:app_offer_id" => "referrers#create"
   get "/refer" => "main#refer"
   get "/refer/:app_offer_id" => "main#refer"
+  get "/referral" => "main#referral"
+  get "/profile" => "main#profile"
+  get "/game_rewards/" => "game_rewards#index"
   resources :app_offers
   resources :referrers
   resources :affiliates
   resources :campaign_infos
+  resources :articles
+  resources :app_banners
+  resources :game_awards
 
+  get '/login' => 'logins#new'
+  get '/login/create' => 'logins#create', as: :create_login
 end

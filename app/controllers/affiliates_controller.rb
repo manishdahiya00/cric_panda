@@ -1,4 +1,6 @@
 class AffiliatesController < ApplicationController
+  layout  "admin"
+
   before_action :set_affiliate, only: %i[ show edit update destroy ]
 
   def index

@@ -1,0 +1,69 @@
+<%= render "navbar" %>
+<div class="d-flex align-items-center flex-column bg-body-secondary mt-2 profile-container">
+   <div>
+     <div class="d-flex justify-content-start align-items-center p-2">
+       <p class="fs-4 fw-medium">Name :</p>
+       &nbsp;&nbsp;&nbsp;
+       <p class="fs-4">name</p>
+     </div>
+     <div class="d-flex align-items-center justify-content-between p-2">
+       <p class="fs-4 fw-medium">Email :</p>
+       &nbsp;&nbsp;&nbsp;
+       <p class="fs-4">email</p>
+     </div>
+     <div class="d-flex align-items-center p-2">
+       <p class="fs-4 fw-medium">Phone :</p>
+       &nbsp;&nbsp;&nbsp;
+       <p class="fs-4">email</p>
+     </div>
+   </div>
+  <div class="d-lg-flex justify-content-between align-items-center">
+<div class="profile-card card content-center p-4 m-2 bg-warning text-light ">
+  <p class="fs-4 fw-medium">Total Referrals</p>
+  <p class="fs-5 fw-medium">20</p>
+</div>
+    <div class="profile-card card content-center p-4 m-2 bg-success text-light ">
+      <p class="fs-4 fw-medium">Total Earnings</p>
+      <p class="fs-5 fw-medium">Rs. 20</p>
+    </div>
+</div>
+  <hr class="ps-5 pe-5 w-100"/>
+  <div class="form-container mb-5 mt-3">
+    <form>
+      <p class="fs-3 fw-bold">Submit Your Redeem Request</p>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label fs-4 fw-medium">Phone</label>
+        <input type="tel" class="form-control p-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your mobile number">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label fs-4 fw-medium">Upi Id</label>
+        <input type="text" class="form-control p-3" id="exampleInputPassword1" placeholder="Enter your Upi id">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label fs-4 fw-medium">Amount</label>
+        <input type="number" class="form-control p-3" id="exampleInputPassword1" placeholder="Enter the amount">
+      </div>
+      <button type="submit" class="btn btn-dark w-100 fs-5 fw-medium mt-3">Submit</button>
+    </form>
+  </div>
+  <div class="table-container">
+    <h1>History</h1>
+    <table class="table table-bordered ">
+      <thead>
+      <tr>
+        <th scope="col" class="fs-5">Date</th>
+        <th scope="col" class="fs-5">Campaign</th>
+        <th scope="col" class="fs-5">Refer/Completed</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fs-5">Date</td>
+          <td class="fs-5">Campaign</td>
+          <td class="fs-5">Refer/Completed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= render "footer" %>

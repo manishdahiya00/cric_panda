@@ -19,11 +19,9 @@
       <%= form.submit "Complete Offer", class:"btn btn-success fs-4" %>
     </div>
     <br/>
-   <%= form_with(model: Affiliate) do |form| %>
-      <submit class="d-flex flex-column">
+      <div class="d-flex flex-column">
         <a href="/refer/<%= @app_offer.id %>?ref_code=<%= @referral_code %>&camp=<%= @app_offer.offer_name %>" target="_parent" class="btn btn-success fs-4 refer-btn">Refer And Earn <%= image_tag "refer and earn.png", style: "width:35px" %></a>
-      </submit>
-    <% end %>
+      </div>
   <% end %>
 </div>
 <div class="container d-flex">

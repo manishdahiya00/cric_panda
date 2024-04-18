@@ -1,4 +1,6 @@
 class AppBannersController < ApplicationController
+  layout  "admin"
+
   before_action :set_app_banner, only: %i[ show edit update destroy ]
   def index
     @app_banners = AppBanner.all

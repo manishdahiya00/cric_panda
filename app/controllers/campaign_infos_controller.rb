@@ -1,4 +1,7 @@
 class CampaignInfosController < ApplicationController
+
+  layout  "admin"
+
   before_action :set_campaign_info, only: %i[ show edit update destroy ]
   def index
     @campaign_infos = CampaignInfo.all

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  app_offer_id: MyString
+  event_title: MyString
+  event_amount: MyString
+  pay_type: MyString
+  event_order: 1
+
+two:
+  app_offer_id: MyString
+  event_title: MyString
+  event_amount: MyString
+  pay_type: MyString
+  event_order: 1

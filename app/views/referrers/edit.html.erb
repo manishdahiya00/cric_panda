@@ -1,13 +1,4 @@
-<%= stylesheet_link_tag "admin" %>
-<nav class="navbar px-5 me-5">
-  <h2>Admin Dashboard</h2>
-  <a href="/app_offers"><%= image_tag "user.png",style: "width:50px" %></a>
-</nav>
-<hr/>
-<div class="main">
-  <div class="px-4">
-    <%= render "shared/sidebar" %>
-  </div>
+
   <div class="main-content container">
     <% if notice %>
       <div class="alert alert-warning" role="alert"><%= notice %></div>
@@ -23,4 +14,3 @@
     </div>
 
   </div>
-</div>

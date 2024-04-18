@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_17_100832) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_18_113609) do
   create_table "affiliates", force: :cascade do |t|
     t.string "paytm_number"
     t.string "campaign_name"
@@ -75,6 +75,31 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_100832) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "campaigns", force: :cascade do |t|
+    t.string "click_id"
+    t.string "source_ip"
+    t.string "phone"
+    t.string "version_code"
+    t.string "version_name"
+    t.string "source"
+    t.string "mobile"
+    t.string "amount"
+    t.boolean "status", default: false
+    t.integer "campaign_info_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "app_offer_id"
+    t.string "event_title"
+    t.string "event_amount"
+    t.string "pay_type"
+    t.integer "event_order", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "game_awards", force: :cascade do |t|
     t.string "title"
     t.string "image_url"
@@ -84,6 +109,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_100832) do
     t.string "redirect_url"
     t.string "input_name"
     t.string "publisher"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_rewards", force: :cascade do |t|
+    t.string "player_id"
+    t.integer "game_award_id"
+    t.boolean "status", default: false
+    t.string "click_id"
+    t.string "source_ip"
+    t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

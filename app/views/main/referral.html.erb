@@ -1,0 +1,75 @@
+<%= javascript_include_tag 'copyLink.js' %>
+<%= render partial: "navbar" %>
+<div>
+  <div class="refer-container">
+    <%= image_tag "referral.png",class:"refer" %>
+  </div>
+  <div class="referral-line h-5 d-flex justify-content-center pt-4 pb-2 fw-medium">
+    <p>GET Rs 2 PAYTM/UPI CASH INSTANT On <%= params[:camp] %></p>
+  </div>
+  <div class="container d-flex flex-wrap flex-lg-nowrap justify-content-center align-items-center gap-3 p-2">
+    <%= image_tag @app_offer.image_url, class:"img-thumbnail" %>
+    <%= form_with model: Referrer, url: referrers_path, class: "w-100 mt-0 ms-2", id: "offer-form" do |form| %>
+      <%= form.hidden_field :app_offer_id,class:"form-control" ,value:params["app_offer_id"]%>
+      <div class="mb-3">
+        <%= form.label :paytm_number, class:"form-label fs-4 fw-medium" %>
+        <%= form.telephone_field :paytm_number,class:"form-control", placeholder:"Enter Your Phone Number", :required => true ,id:"paytm_number" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :upi_id, class:"form-label fs-4 fw-medium" %>
+        <%= form.text_field :upi_id,class:"form-control", placeholder:"Enter Your Valid UPI Id",:required => true ,id:"upi_id"%>
+      </div>
+      <div class="mb-3 d-flex justify-content-center captcha">
+        <div class="g-recaptcha" data-error-callback="Captcha is Required"  data-sitekey="<%= ENV['RECAPTCHA_SITE_KEY'] %>" aria-required="true"></div>
+      </div>
+      <div class="d-flex flex-column">
+        <%= form.submit "Complete Offer", class:"btn btn-success fs-4" %>
+      </div>
+    <% end %>
+  </div>
+  <hr class="ms-3"/>
+  <div class="btn-container">
+    <a href="https://t.me/EarnMoreEarnBig" >
+      <%= image_tag "join_telegram.png" ,class:"referral_images"%>
+    </a>
+    <a href="https://chat.whatsapp.com/GnBtyrHozEH9oyo6hA4GwM" >
+      <%= image_tag "chat_on_whatsapp.png",class:"referral_images" %>
+    </a>
+  </div>
+  <hr class="ms-3"/>
+  <div class="border shadow-lg youtube-container">
+    <p class="fs-5 fw-medium mt-3">Want To Know more. Check Us On:</p>
+    <a href="https://www.youtube.com/watch?v=7uEPK1lAnN4"><%= image_tag "youtube-gif.gif",class:"yt-gif"%></a>
+  </div>
+  <hr class="ms-3"/>
+  <div class="d-flex flex-column terms-container align-items-center border p-2">
+    <p class="fs-4 fw-bold">Offer Terms And Conditions</p>
+    <ul class="list-group list-group-numbered">
+      <li class="list-group-item border-0">
+        Offer valid only once per User/UPI-Id/IP address and Device.
+      </li>
+      <li class="list-group-item border-0">
+        Multiple registrations from the same user/UPI-Id/IP address, similar looking usernames and e-mail IDs and Device will not be paid.
+      </li>
+      <li class="list-group-item border-0">
+        Use only Real Indian Mobile Numbers and genuine mail ID to register in the app.
+      </li>
+      <li class="list-group-item border-0">
+        Merchant verifies your account, if they find any Duplicate or Suspicious transaction, then your cashback may get rejected.
+      </li>
+      <li class="list-group-item border-0">
+        Any query related to Cashback will be entertained by CricPanda Team. Write an email to apphelpmg@gmail.com
+      </li>
+    </ul>
+  </div>
+</div>
+<%= render partial: "footer" %>
+<a href="https://chat.whatsapp.com/GnBtyrHozEH9oyo6hA4GwM" class="whatsapp">
+  <%= image_tag "whatsapp.png",style: "width:60px" %>
+</a>
+<a href="https://t.me/s/EarnMoreEarnBig" class="telegram">
+  <%= image_tag "telegram.png",style: "width:60px" %>
+</a>
+<a href="https://www.youtube.com/watch?v=7uEPK1lAnN4&feature=youtu.be" class="youtube">
+  <%= image_tag "youtube.png",style: "width:60px" %>
+</a>

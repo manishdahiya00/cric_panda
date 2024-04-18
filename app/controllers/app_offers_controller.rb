@@ -1,4 +1,5 @@
 class AppOffersController < ApplicationController
+  layout  "admin"
   before_action :set_app_offer, only: %i[show edit update]
   def index
     @app_offers = AppOffer.all
@@ -20,6 +21,7 @@ class AppOffersController < ApplicationController
   end
   def update
       if @app_offer.update(app_offer_params)
+        redirect_to app_offers_path , notice: "App offer updated successfully."
       else
         render :edit, status: :unprocessable_entity
       end
