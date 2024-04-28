@@ -1,0 +1,87 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="fs-5">Id</th>
+    <th scope="col" class="fs-5">Paytm No.</th>
+    <th scope="col" class="fs-5">Upi Id</th>
+    <th scope="col" class="fs-5">Amount</th>
+    <th scope="col" class="fs-5">Status</th>
+    <th scope="col" class="fs-5">Ref User Id</th>
+    <th scope="col" class="fs-5">Created At</th>
+    <th scope="col" class="fs-5">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @app_redeems.each do |redeem| %>
+    <tr>
+      <th class="fs-5">
+        <a href="/admin/app_redeems/<%= redeem.id %>"><%= redeem.id %></a>
+      </th>
+      <td class="fs-5">
+        <%= redeem.pay_phone %>
+      </td>
+      <td class="fs-5">
+        <%= redeem.upi_id %>
+      </td>
+      <td class="fs-5">
+        <%= redeem.pay_amount %>
+        </td>
+      <td class="fs-5">
+        <% if redeem.status == "PENDING" %>
+        <p class="text-danger fw-medium">PENDING</p>
+        <% elsif redeem.status == "PROCESSING" %>
+        <p class="text-warning fw-medium">PROCESSING</p>
+        <% else %>
+        <p class="text-success fw-medium">COMPLETED</p>
+        <% end %>
+      </td>
+       <th class="fs-5">
+        <a href="/admin/ref_user/<%= redeem.ref_user_id %>"><%= redeem.ref_user_id %></a>
+      </th>
+     <td class="fs-5">
+       <%= redeem.created_at.strftime('%d/%m/%Y') %>
+       &nbsp;
+       <%= redeem.created_at.strftime('%I:%M:%S %p') %>
+     </td>
+      <td class="fs-5">
+         <div class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal<%= redeem.id %>">Payout</div>
+    <div class="modal fade" id="exampleModal<%= redeem.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Payout</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+         <%= form_with(url:payout_path,method: :post) do |f| %>
+            <%= f.hidden_field :id,value:redeem.id ,class:"form-control" %>
+            <%= f.hidden_field :upi_id,value:redeem.upi_id ,class:"form-control" %>
+            <%= f.hidden_field :email,value:redeem.pay_email ,class:"form-control" %>
+            <%= f.hidden_field :phone,value:redeem.pay_phone ,class:"form-control" %>
+           <div class="mb-3">
+             <%= f.label :amount,class:"form-label" %>
+            <%= f.text_field :amount ,class:"form-control",title: "Please enter the amount",required: true %>
+          </div>
+            <div class="mb-3">
+             <%= f.label :secret,class:"form-label" %>
+            <%= f.text_field :secret ,class:"form-control",required: true %>
+          </div>
+            <div class="mb-3">
+            <%= f.label :message,class:"form-label" %>
+            <%= f.text_field :message ,class:"form-control" %>
+          </div>
+             <%= submit_tag "Payout",class:"btn btn-success" %>
+       <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

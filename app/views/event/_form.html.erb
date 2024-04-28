@@ -1,0 +1,31 @@
+  <%= form_with(model: event, class: "form-horizontal") do |form| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group p-2 w-100">
+          <%= form.hidden_field :app_offer_id, value:params[:app_offer_id],class: "form-control" %>
+          <%= form.label :event_title,class: "control-label fs-5 fw-medium" %>
+          <%= form.text_field :event_title,value:params[:event_id], class: "form-control" %>
+        </div>
+        <div class="form-group p-2">
+          <%= form.label :event_amount, class: "control-label fs-5 fw-medium" %>
+          <%= form.text_field :event_amount,class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group p-2 w-100">
+          <%= form.label :event_order, class: "control-label fs-5 fw-medium" %>
+          <%= form.text_field :event_order,  value:1 ,class: "form-control" %>
+        </div>
+        <div class="form-group p-2">
+          <%= form.label :pay_type, class: "control-label fs-5 fw-medium mb-2" %>
+          <br/>
+          <%= form.select :pay_type ,["auto","manual"] ,class: "form-control"%>
+        </div>
+    </div>
+   
+    <div class="form-group p-2">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit "Create", class: "btn edit-save-btn text-light fw-medium ms-2" %>
+      </div>
+    </div>
+  <% end %>

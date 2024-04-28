@@ -12,6 +12,10 @@
   <% end %>
   <div class="row">
     <div class="col-md-6">
+        <div class="form-group p-2">
+        <% @award_id = SecureRandom.hex(16) %>
+        <%= form.hidden_field :award_id, value:@award_id,class: "form-control" %>
+      </div>
       <div class="form-group p-2">
         <%= form.label :title, class: "control-label fs-5 fw-medium" %>
         <%= form.text_field :title, class: "form-control" %>

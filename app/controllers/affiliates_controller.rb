@@ -1,7 +1,8 @@
 class AffiliatesController < ApplicationController
   layout  "admin"
 
-  before_action :set_affiliate, only: %i[ show edit update destroy ]
+  before_action :set_affiliate, only: %i[ show edit  destroy ]
+  before_action :require_manager
 
   def index
     @affiliates = Affiliate.all
@@ -14,20 +15,24 @@ class AffiliatesController < ApplicationController
   def edit
   end
   def create
-    @affiliate = Affiliate.new(affiliate_params)
+    request_data = JSON.parse(request.body.read)
+    paytm_number = request_data["paytm_number"]
+    puts paytm_number
+    app_offer_id = request_data["app_offer_id"]
+    app_offer = AppOffer.find(app_offer_id).offer_name
+    upi_id = request_data["upi_id"]
+    referral_code = session[:referral_code]
 
-      if @affiliate.save
- redirect_to affiliate_url(@affiliate), notice: "Affiliate was successfully created."
-      else
-    render :new, status: :unprocessable_entity
-      end
-  end
-  def update
-      if @affiliate.update(affiliate_params)
-       redirect_to affiliate_url(@affiliate), notice: "Affiliate was successfully updated."
-      else
-         render :edit, status: :unprocessable_entity
-      end
+    @affiliate = Affiliate.new(
+      paytm_number: paytm_number,
+      campaign_name: app_offer,
+      referral_code: referral_code
+    )
+    if @affiliate.save
+      render json: @affiliate, status: :created
+    else
+      render json: { errors: @affiliate.errors.full_messages }, status: :unprocessable_entity
+    end
   end
   def destroy
     @affiliate.destroy!

@@ -1,0 +1,42 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="fs-5">Id</th>
+    <th scope="col" class="fs-5">Click Id</th>
+    <th scope="col" class="fs-5">Event</th>
+    <th scope="col" class="fs-5">Offer</th>
+    <th scope="col" class="fs-5">Source Ip</th>
+    <th scope="col" class="fs-5">Status</th>
+    <th scope="col" class="fs-5">DateTime</th>
+    <th scope="col" class="fs-5">Payment Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @postbacks.each do |postback| %>
+    <tr>
+      <th class="fs-5">
+        <%= postback.id %>
+      </th>
+      <td class="fs-5">
+        <%= postback.click_id %></td>
+      <td class="fs-5">
+        <% @event = Event.find_by(app_offer_id:postback.app_offer_id) %>
+        <%= @event.event_title %></td>
+      <td class="fs-5">
+        <% @app_offer = AppOffer.find_by(id:postback.app_offer_id) %>
+        <%= @app_offer.offer_name %>
+        </td>
+      <td class="fs-5"><%= postback.source_ip %></td>
+      <td class="fs-5">
+        <% if postback.status %>
+          <i class="fa-solid fa-check text-success fs-3" ></i>
+        <% else %>
+          <i class="fa-solid fa-xmark text-danger fs-3" ></i>
+        <% end %>
+      </td>
+      <td class="fs-5"><%= postback.created_at.strftime('%d/%m/%y %I:%M:%S %p') %></td>
+      <td class="fs-5"><%= postback.paid %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

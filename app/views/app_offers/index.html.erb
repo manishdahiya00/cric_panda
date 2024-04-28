@@ -1,12 +1,20 @@
-  <div class="main-content">
-    <% if notice %>
-      <div class="alert alert-success" role="alert"><%= notice %></div>
-    <% end %>
+<div class="main-content">
+  <% if notice %>
+    <div class="alert alert-success" role="alert"><%= notice %></div>
+  <% end %>
+
   <div class="d-flex justify-content-between align-items-center">
     <h1 class="mb-4">Listing App offers</h1>
-    <%= link_to "New app offer", new_app_offer_path ,class:"btn btn-success mb-4"%>
+    <%= link_to "New app offer", new_app_offer_path, class: "btn btn-success mb-4" %>
   </div>
-    <div id="app_offers">
-      <%= render "app_offer" %>
-    </div>
+
+  <div id="app_offers">
+    <%= form_with(url: app_offers_path, method: :get) do |f| %>
+      <div class="form-group">
+        <%= f.text_field :offer_name, placeholder: "Search by offer name", class: "form-control" %>
+      </div>
+    <% end %>
+
+    <%= render "app_offer" %>
   </div>
+</div>

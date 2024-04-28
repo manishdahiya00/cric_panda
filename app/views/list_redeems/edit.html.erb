@@ -1,0 +1,15 @@
+  <div class="main-content container">
+    <% if notice %>
+      <div class="alert alert-warning" role="alert"><%= notice %></div>
+    <% end %>
+    <div class="ms-2 mt-2">
+    </div>
+    <div class="d-lg-flex justify-content-start align-items-center gap-3">
+      <%= link_to "Back", list_redeems_path,class:"btn btn-dark fw-medium" %>
+      <h1 class="edit-heading">Editing App Redeem</h1>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <%= render "form", list_redeem: @app_redeem %>
+    </div>
+
+  </div>

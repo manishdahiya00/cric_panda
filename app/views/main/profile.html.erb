@@ -1,69 +1,114 @@
 <%= render "navbar" %>
 <div class="d-flex align-items-center flex-column bg-body-secondary mt-2 profile-container">
-   <div>
-     <div class="d-flex justify-content-start align-items-center p-2">
+   <div class="d-flex align-items-center gap-5 user-details-container">    
+    <% if @user %>
+     <%= image_tag @user.social_imgUrl ,style:"width:150px" %>   
+    <div>
+       <div class="d-flex justify-content-start align-items-center p-2">
        <p class="fs-4 fw-medium">Name :</p>
        &nbsp;&nbsp;&nbsp;
-       <p class="fs-4">name</p>
+       <p class="fs-4"><%= @user.name %></p>
      </div>
      <div class="d-flex align-items-center justify-content-between p-2">
        <p class="fs-4 fw-medium">Email :</p>
        &nbsp;&nbsp;&nbsp;
-       <p class="fs-4">email</p>
+       <p class="fs-5"><%= @user.email %></p>
      </div>
+    
      <div class="d-flex align-items-center p-2">
-       <p class="fs-4 fw-medium">Phone :</p>
-       &nbsp;&nbsp;&nbsp;
-       <p class="fs-4">email</p>
+     <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-danger w-100" %>
      </div>
+    </div>
+    <% else %>
+    <div class="d-flex flex-column gap-3 align-items-center mb-4 mt-5">
+      <h1>Sign In To View Your Profile</h1>
+     <%= google_sign_in_button proceed_to: google_login_path,data:{turbo:false},class:"btn btn-dark fs-5 fw-medium" do %>
+ <%= image_tag('google_logo.png', alt: 'Google',style:"width:40px",class:"m-2") %> Sign in with my Google account
+<% end %>
+    </div>
+    <% end %>
+
    </div>
-  <div class="d-lg-flex justify-content-between align-items-center">
-<div class="profile-card card content-center p-4 m-2 bg-warning text-light ">
+  <hr class="ps-5 pe-5 w-100"/>
+  <% if @user %>
+    <div class="d-lg-flex justify-content-between align-items-center">
+<div class="profile-card card content-center p-4 m-2 bg-success text-light ">
   <p class="fs-4 fw-medium">Total Referrals</p>
-  <p class="fs-5 fw-medium">20</p>
+  <p class="fs-3 fw-medium">
+     <%=  @redeems.count %>
+  </p>
 </div>
-    <div class="profile-card card content-center p-4 m-2 bg-success text-light ">
+    <div class="profile-card card content-center p-4 m-2 bg-dark text-light ">
       <p class="fs-4 fw-medium">Total Earnings</p>
-      <p class="fs-5 fw-medium">Rs. 20</p>
+      <p class="fs-3 fw-medium">
+        &#8377 <%=  @redeems.sum { |r| r.pay_amount.to_i } %>
+      </p>
     </div>
 </div>
-  <hr class="ps-5 pe-5 w-100"/>
   <div class="form-container mb-5 mt-3">
-    <form>
+      <% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+  <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
+    <%= form_with model:AppRedeem,url:profile_path do |f| %>
       <p class="fs-3 fw-bold">Submit Your Redeem Request</p>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label fs-4 fw-medium">Phone</label>
-        <input type="tel" class="form-control p-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your mobile number">
+        <%= f.hidden_field :ref_user_id,value:@user.id, class:"form-control p-3"%>
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label fs-4 fw-medium">Upi Id</label>
-        <input type="text" class="form-control p-3" id="exampleInputPassword1" placeholder="Enter your Upi id">
+        <%= f.hidden_field :pay_email,value:@user.email, class:"form-control p-3" %>
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label fs-4 fw-medium">Amount</label>
-        <input type="number" class="form-control p-3" id="exampleInputPassword1" placeholder="Enter the amount">
+        <%= f.label :mobile_number ,class:"form-label fs-4 fw-medium" %>
+        <%= f.telephone_field :pay_phone,class:"form-control p-3",placeholder:"Enter your mobile number",pattern: "[0-9]{10,}", title: "Please enter at least 10 digits",required: true %>
       </div>
-      <button type="submit" class="btn btn-dark w-100 fs-5 fw-medium mt-3">Submit</button>
-    </form>
-  </div>
-  <div class="table-container">
+      <div class="mb-3">
+        <%= f.label :upi_id ,class:"form-label fs-4 fw-medium" %>
+        <%= f.text_field :upi_id, class:"form-control p-3", placeholder:"Enter your Upi id",required: true %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :amount ,class:"form-label fs-4 fw-medium" %>
+        <%= f.number_field :pay_amount,class:"form-control p-3",placeholder:"Enter the amount",required: true %>
+      </div>
+      <%= f.submit :redeem,class:"btn btn-dark w-100 fs-5 fw-medium mt-3" %>
+      <div class="table-container mt-5 w-100">
     <h1>History</h1>
     <table class="table table-bordered ">
       <thead>
       <tr>
         <th scope="col" class="fs-5">Date</th>
-        <th scope="col" class="fs-5">Campaign</th>
-        <th scope="col" class="fs-5">Refer/Completed</th>
+        <th scope="col" class="fs-5">Pay Amount</th>
+        <th scope="col" class="fs-5">Status</th>
       </tr>
       </thead>
       <tbody>
+        <% @redeems.each do |redeem| %>
         <tr>
-          <td class="fs-5">Date</td>
-          <td class="fs-5">Campaign</td>
-          <td class="fs-5">Refer/Completed</td>
+          <td class="fs-5">
+       <%= redeem.created_at.strftime('%d/%m/%Y') %>
+       &nbsp;
+       <%= redeem.created_at.strftime('%I:%M:%S %p') %>
+     </td>
+          <td class="fs-5"><%= redeem.pay_amount %></td>
+           <td class="fs-5">
+        <% if redeem.status == "PENDING" %>
+        <p class="text-danger fw-medium">PENDING</p>
+        <% elsif redeem.status == "PROCESSING" %>
+        <p class="text-warning fw-medium">PROCESSING</p>
+        <% else %>
+        <p class="text-success fw-medium">COMPLETED</p>
+        <% end %>
+      </td>
         </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
+    <% end %>
+  </div>
+  <% end %>
+  
 </div>
 <%= render "footer" %>

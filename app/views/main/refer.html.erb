@@ -1,12 +1,19 @@
 <%= javascript_include_tag 'copyLink.js' %>
 <%= render partial: "navbar" %>
+      <% if notice %>
+  <div class="alert alert-warning"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+  <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
 <div>
+  
   <div class="refer-container">
-  <%= image_tag "winassure.png",class:"refer" %>
+  <%= image_tag "winassure.png",class:"refer w-100 me-4" %>
     </div>
   <div class="refer-line h-5 d-flex justify-content-center pt-4 pb-2  fs-4 fw-medium">
     <p>Hey Refer and Earn Paytm Cashback</p>
-  </div>
+  </div>  
     <div class="main-conatiner">
       <div class="fs-4 fw-bold ms-3 mt-2 ">
         Hello, Dear Friend
@@ -20,17 +27,6 @@
         Referral Code: <span class="fs-5 fw-medium"><%= @referral_code %></span>
       </div>
       <hr class="ms-3"/>
-      <div class="ms-3 fw-medium">
-        <p>Click on link sponsored by CricPanda:</p>
-        <a href="/referral?camp=<%= @app_offer.offer_name %>&ref_code=<%= @referral_code %>">https://localhost:8080/referral/<%= @app_offer.id %>?ref_code=<%= @referral_code %>&camp=<%= @app_offer.offer_name %></a>
-      </div>
-      <hr class="ms-3"/>
-      <div class="ms-3 mt-2 ">
-        <p class="fs-6 fw-bold"> Steps to earn : </p>
-        <ul>
-          <li class="fs-6 fw-medium">On Successfully initial you get Rs. 3</li>
-        </ul>
-      </div>
       <div class="link-container ms-3">
         <p class="fs-6 fw-bold">Click on below link:</p>
         <div class="text-center link-container-child">
@@ -47,10 +43,11 @@
 <div class="border shadow-lg youtube-container">
 <p class="fs-5 fw-medium mt-3">Want To Know more. Check Us On:</p>
 <a href="https://www.youtube.com/watch?v=7uEPK1lAnN4"><%= image_tag "youtube-gif.gif",class:"yt-gif"%></a>
+<%= image_tag "telegram-gif.gif",class:"tele-gif"%>
 </div>
   <hr class="ms-3"/>
  <div class="payout-container">
-   <%= image_tag "payout.png" ,class:"payout-img"%>
+   <%= image_tag "payout1.png" ,class:"payout-img"%>
 </div>
  </div>
 <%= render partial: "footer" %>

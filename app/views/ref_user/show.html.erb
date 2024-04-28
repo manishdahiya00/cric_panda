@@ -1,0 +1,61 @@
+ <div class="main-content container">
+   <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+    <div class="d-lg-flex justify-content-start align-items-center gap-3">
+      <%= link_to "Back", admin_app_redeems_path,class:"btn btn-dark fw-medium" %>
+      <h1><%= @ref_user.name %></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Name</label>
+          <h2 class="form-control"><%= @ref_user.name %></h2>
+        </div>
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Email</label>
+          <h2 class="form-control"><%= @ref_user.email %></h2>
+        </div>
+
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Mobile Number</label>
+          <h2 class="form-control"><%= @ref_user.mobile_number %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Location</label>
+          <h2 class="form-control"><%= @ref_user.location %></h2>
+        </div>
+       
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Social Token</label>
+          <h2 class="form-control"><%= @ref_user.social_token %></h2>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+         <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Source Ip</label>
+          <h2 class="form-control"><%= @ref_user.source_ip %></h2>
+        </div>
+
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Social Token</label>
+          <h2 class="form-control"><%= @ref_user.social_token %></h2>
+        </div>
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Social Image Url</label>
+          <h2 class="form-control"><%= @ref_user.social_imgUrl %></h2>
+        </div>
+
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Social Type</label>
+          <h2 class="form-control"><%= @ref_user.social_type %></h2>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

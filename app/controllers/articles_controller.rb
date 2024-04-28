@@ -1,9 +1,13 @@
 class ArticlesController < ApplicationController
   layout  "admin"
-
+before_action :require_manager
   before_action :set_article, only: %i[ show edit update destroy ]
   def index
-    @articles = Article.all
+     if params[:title].present?
+      @articles = Article.where("title LIKE ?", "%#{params[:title]}%").order("id DESC")
+    else
+    @articles = Article.all.order("id DESC")
+    end
   end
   def show
   end

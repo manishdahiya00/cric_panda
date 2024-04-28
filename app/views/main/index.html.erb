@@ -1,4 +1,10 @@
 <%= render partial: "navbar" %>
+      <% if notice %>
+  <div class="alert alert-warning"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+  <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
 <div class="d-flex justify-content-center align-items-center mt-lg-4">
   <%= render partial: "carousel" %>
 </div>

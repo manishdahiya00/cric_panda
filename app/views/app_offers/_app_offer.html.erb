@@ -14,7 +14,7 @@
   <% @app_offers.each do |app_offer| %>
     <tr>
       <th class="fs-5">
-        <a href="/app_offers/<%= app_offer.id %>"><%= app_offer.id %></a>
+        <a href="/admin/app_offers/<%= app_offer.id %>"><%= app_offer.id %></a>
       </th>
       <td><%= image_tag app_offer.image_url,style: "width:80px" %></td>
       <td class="fs-5"><%= app_offer.offer_name %></td>
@@ -27,7 +27,8 @@
           <i class="fa-solid fa-xmark text-danger fs-3" ></i>
         <% end %>
       </td>
-      <td><%= link_to "Edit", edit_app_offer_path(app_offer),class:"btn bg-dark text-light"%>
+      <td>
+        <%= link_to "Edit", edit_app_offer_path(app_offer),class:"btn bg-dark text-light"%>
       </td>
     </tr>
   <% end %>

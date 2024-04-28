@@ -1,0 +1,48 @@
+  <div class="main-content container">
+    <% if notice %>
+      <div class="alert alert-success" role="alert"><%= notice %></div>
+    <% end %>
+    <div class="ms-2 mt-2">
+    </div>
+      <div class="d-lg-flex justify-content-between align-items-center gap-3 me-5">
+       <div class="d-flex gap-3 align-items-center justify-content-start">
+         <%= link_to "Back", app_offers_path,class:"btn btn-dark fw-medium" %>
+        <h1 class="edit-heading">Editing Event</h1>
+       </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+       <%= form_with(model: @event, class: "form-horizontal") do |form| %>
+       <% event = Event.find(params[:event_id]) %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group p-2 w-100">
+          <%= form.hidden_field :app_offer_id, value:params[:app_offer_id],class: "form-control" %>
+          <%= form.label :event_title,class: "control-label fs-5 fw-medium" %>
+          <%= form.text_field :event_title,value:event.event_title,class: "form-control" %>
+        </div>
+        <div class="form-group p-2">
+          <%= form.label :event_amount, class: "control-label fs-5 fw-medium" %>
+          <%= form.text_field :event_amount, value:event.event_amount ,class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group p-2 w-100">
+          <%= form.label :event_order, class: "control-label fs-5 fw-medium" %>
+          <%= form.text_field :event_order,  value:event.event_order ,class: "form-control" %>
+        </div>
+        <div class="form-group p-2">
+          <%= form.label :pay_type, class: "control-label fs-5 fw-medium mb-2" %>
+          <br/>
+          <%= form.select :pay_type ,["auto","manual"],class: "form-control"%>
+        </div>
+    </div>
+   
+    <div class="form-group p-2">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit "Save", class: "btn edit-save-btn text-light fw-medium ms-2" %>
+      </div>
+    </div>
+  <% end %>
+
+    </div>
+  </div>

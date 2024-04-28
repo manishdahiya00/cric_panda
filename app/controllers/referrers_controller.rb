@@ -1,12 +1,17 @@
 class ReferrersController < ApplicationController
 
   layout  "admin"
-
+before_action :require_manager
   before_action :set_referrer, only: %i[ show edit update]
 
   def index
-    @referrers = Referrer.all
+    if params[:paytm_number].present?
+    @referrers = Referrer.where("paytm_number LIKE ?", "%#{params[:paytm_number]}%").order("id DESC")
     @app_offers = AppOffer
+    else
+    @referrers = Referrer.all.order("created_at DESC").order("id DESC")
+    @app_offers = AppOffer
+    end
   end
 
   def show
@@ -20,11 +25,14 @@ class ReferrersController < ApplicationController
   end
 
   def create
-    @referrer = Referrer.new(referrer_params)
-    @app_offer_id = params[:app_offer_id]
+    click_id = SecureRandom.hex(18)
+    @app_offer_id = params["referrer"][:app_offer_id]
+    app_offer = AppOffer.find_by(id: @app_offer_id)
+    @referrer = Referrer.new(paytm_number:params["referrer"][:paytm_number],upi_id:params["referrer"][:upi_id],app_offer_id:params["referrer"][:app_offer_id],click_id:click_id,affiliate_id:params["referrer"][:affiliate_id])
     @refer_code = session[:referral_code]
       if @referrer.save
-        redirect_to refer_path, notice: "Referrer was successfully created."
+        puts params
+          redirect_to "#{app_offer.action_url}?click_id=#{click_id}", allow_other_host: true
       else
         render :new, status: :unprocessable_entity
     end
@@ -44,6 +52,6 @@ class ReferrersController < ApplicationController
     end
 
     def referrer_params
-      params.require(:referrer).permit(:paytm_number,:upi_id,:app_offer_id,:aff_status,:ref_status)
+      params.require(:referrer).permit(:paytm_number,:upi_id,:app_offer_id,:aff_status,:ref_status,:affiliate_id)
     end
 end

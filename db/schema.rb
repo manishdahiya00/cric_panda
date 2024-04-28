@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_18_113609) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_26_071945) do
+  create_table "admins", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "affiliates", force: :cascade do |t|
     t.string "paytm_number"
     t.string "campaign_name"
@@ -45,6 +53,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_113609) do
     t.boolean "event_offer", default: false
     t.integer "priority", default: 1
     t.boolean "insta_offer", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "app_redeems", force: :cascade do |t|
+    t.integer "ref_user_id"
+    t.string "pay_phone"
+    t.string "pay_email"
+    t.string "pay_type"
+    t.string "pay_vendor"
+    t.string "upi_id"
+    t.string "pay_coin"
+    t.string "pay_amount"
+    t.string "status", default: "PENDING"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,6 +112,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_113609) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_postbacks", force: :cascade do |t|
+    t.integer "referrer_id"
+    t.string "click_id"
+    t.string "event_title"
+    t.integer "event_id"
+    t.string "app_offer_id"
+    t.string "source_ip"
+    t.boolean "status"
+    t.boolean "duplicate"
+    t.boolean "paid", default: false
+    t.string "event_amount"
+    t.string "pay_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "app_offer_id"
     t.string "event_title"
@@ -111,6 +149,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_113609) do
     t.string "publisher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "award_id"
   end
 
   create_table "game_rewards", force: :cascade do |t|
@@ -120,6 +159,37 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_113609) do
     t.string "click_id"
     t.string "source_ip"
     t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "managers", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "postbacks", force: :cascade do |t|
+    t.integer "referrer_id"
+    t.string "click_id"
+    t.string "paytm_number"
+    t.string "upi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ref_users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "name"
+    t.string "mobile_number"
+    t.string "location"
+    t.string "source_ip"
+    t.string "social_token"
+    t.string "social_imgUrl"
+    t.text "oauth_response"
+    t.string "social_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

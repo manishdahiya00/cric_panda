@@ -1,9 +1,9 @@
 class AppBannersController < ApplicationController
   layout  "admin"
-
+  before_action :require_manager
   before_action :set_app_banner, only: %i[ show edit update destroy ]
   def index
-    @app_banners = AppBanner.all
+    @app_banners = AppBanner.all.order("id DESC")
   end
   def show
   end

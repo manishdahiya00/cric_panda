@@ -13,15 +13,15 @@
   <% @articles.each do |article| %>
     <tr>
       <th class="fs-5">
-        <a href="/articles/<%= article.id %>"><%= article.id %></a>
+        <a href="/admin/articles/<%= article.id %>"><%= article.id %></a>
       </th>
       <td>
         <% if article.img_url %>
-          <%= image_tag article.img_url %>
+          <%= image_tag article.img_url,style:"width:200px" %>
         <% end %>
       </td>
       <td class="fs-5"><%= article.title %></td>
-      <td class="fs-5"><%= article.published_date %></td>
+      <td class="fs-5"><%= article.created_at.strftime("%d/%m/%y  %I:%M:%S %p") %></td>
       <td class="fs-5">
         <% if article.highlight %>
           <i class="fa-solid fa-check text-success fs-3" ></i>

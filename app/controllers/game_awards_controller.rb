@@ -1,10 +1,15 @@
 class GameAwardsController < ApplicationController
 
   layout  "admin"
-
+before_action :require_manager
   before_action :set_game_award, only: %i[ show edit update destroy ]
   def index
-    @game_awards = GameAward.all
+    if params[:title].present?
+      @game_awards = GameAward.where("title LIKE ?", "%#{params[:title]}%").order("id DESC")
+    else
+    @game_awards = GameAward.all.order("id DESC").order("id DESC")
+    @id = @award_id
+    end
   end
   def show
   end
@@ -38,6 +43,6 @@ class GameAwardsController < ApplicationController
       @game_award = GameAward.find(params[:id])
     end
     def game_award_params
-      params.require(:game_award).permit(:title, :image_url, :rules, :status, :identifier, :redirect_url, :input_name, :publisher)
+      params.require(:game_award).permit(:title, :image_url, :rules, :status, :identifier, :redirect_url, :input_name, :publisher,:award_id)
     end
 end

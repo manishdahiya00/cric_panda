@@ -1,0 +1,2 @@
+class ListRedeem < ApplicationRecord
+end

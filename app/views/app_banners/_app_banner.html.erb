@@ -13,7 +13,7 @@
     <% @app_banners.each do |app_banner| %>
       <tr>
         <th class="fs-5">
-          <a href="/app_banners/<%= app_banner.id %>"><%= app_banner.id %></a>
+          <a href="/admin/app_banners/<%= app_banner.id %>"><%= app_banner.id %></a>
         </th>
         <td><%= image_tag app_banner.image_url ,style:"width:60px"%></td>
         <td class="fs-5"><%= app_banner.redirect_url %></td>

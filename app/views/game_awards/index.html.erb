@@ -8,6 +8,13 @@
       <%= link_to "New game award", new_game_award_path ,class:"btn btn-success mb-4"%>
     </div>
     <div>
+           <div>
+        <%= form_with(url: game_awards_path, method: :get) do |f| %>
+      <div class="form-group">
+        <%= f.text_field :title, placeholder: "Search by title", class: "form-control" %>
+      </div>
+        <% end %>
+      </div>
         <%= render "game_award" %>
     </div>
   </div>

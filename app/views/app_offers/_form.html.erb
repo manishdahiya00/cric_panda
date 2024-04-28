@@ -11,7 +11,7 @@
     <% end %>
     <div class="row">
       <div class="col-md-6">
-        <div class="form-group p-2">
+        <div class="form-group p-2 w-100">
           <%= form.label :offer_name, class: "control-label fs-5 fw-medium" %>
           <%= form.text_field :offer_name, class: "form-control" %>
         </div>
@@ -35,7 +35,7 @@
           <%= form.label :retention_amount, class: "control-label fs-5 fw-medium" %>
           <%= form.text_field :retention_amount, class: "form-control" %>
         </div>
-        <div class="d-lg-flex gap-3 mt-4 me-5">
+        <div class="d-lg-flex gap-3 mt-2 ">
           <div class="form-group p-2 d-flex align-items-center gap-2">
             <%= form.label :status, class: "control-label fs-5 fw-medium" %>
             <%= form.check_box :status, class: "form-check-input" %>
@@ -59,7 +59,7 @@
       </div>
 
       <div class="col-md-6">
-        <div class="form-group p-2">
+        <div class="form-group p-2 w-100">
           <%= form.label :retention_day, class: "control-label fs-5 fw-medium" %>
           <%= form.text_field :retention_day, class: "form-control" %>
         </div>
@@ -94,4 +94,5 @@
         <%= form.submit "Save", class: "btn edit-save-btn text-light fw-medium" %>
       </div>
     </div>
+
   <% end %>

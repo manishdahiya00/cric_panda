@@ -1,5 +1,11 @@
 <%= javascript_include_tag 'copyLink.js' %>
 <%= render partial: "navbar" %>
+      <% if notice %>
+  <div class="alert alert-warning"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+  <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
 <div>
   <div class="refer-container">
     <%= image_tag "referral.png",class:"refer" %>
@@ -9,8 +15,10 @@
   </div>
   <div class="container d-flex flex-wrap flex-lg-nowrap justify-content-center align-items-center gap-3 p-2">
     <%= image_tag @app_offer.image_url, class:"img-thumbnail" %>
-    <%= form_with model: Referrer, url: referrers_path, class: "w-100 mt-0 ms-2", id: "offer-form" do |form| %>
-      <%= form.hidden_field :app_offer_id,class:"form-control" ,value:params["app_offer_id"]%>
+    <%= form_with model: Referrer, url: referrers_path, class: "w-100 mt-0 ms-2", id: "offer-form",data:{turbo: false} do |form| %>
+      <%= form.hidden_field :app_offer_id,class:"form-control" ,value:@app_offer.id%>
+      <% affiliate_id = Affiliate.find_by(referral_code:session[:referral_code]).id %>
+      <%= form.hidden_field :affiliate_id,value:affiliate_id %>
       <div class="mb-3">
         <%= form.label :paytm_number, class:"form-label fs-4 fw-medium" %>
         <%= form.telephone_field :paytm_number,class:"form-control", placeholder:"Enter Your Phone Number", :required => true ,id:"paytm_number" %>

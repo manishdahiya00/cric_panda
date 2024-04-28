@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ref_user_id: 1
+  pay_phone: MyString
+  pay_email: MyString
+  pay_type: MyString
+  pay_vendor: MyString
+  upi_id: MyString
+  pay_coin: MyString
+  pay_amount: MyString
+  status: MyString
+
+two:
+  ref_user_id: 1
+  pay_phone: MyString
+  pay_email: MyString
+  pay_type: MyString
+  pay_vendor: MyString
+  upi_id: MyString
+  pay_coin: MyString
+  pay_amount: MyString
+  status: MyString

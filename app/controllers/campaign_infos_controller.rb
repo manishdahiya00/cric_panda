@@ -1,10 +1,14 @@
 class CampaignInfosController < ApplicationController
 
   layout  "admin"
-
+before_action :require_manager
   before_action :set_campaign_info, only: %i[ show edit update destroy ]
   def index
-    @campaign_infos = CampaignInfo.all
+    if params[:title].present?
+      @campaign_infos = CampaignInfo.where("title LIKE ?", "%#{params[:title]}%").order("id DESC")
+    else
+    @campaign_infos = CampaignInfo.all.order("id DESC")
+    end
   end
   def show
   end

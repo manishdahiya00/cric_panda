@@ -14,7 +14,7 @@
   <% @campaign_infos.each do |camp_info| %>
     <tr>
       <th class="fs-5">
-        <a href="/campaign_infos/<%= camp_info.id %>"><%= camp_info.id %></a>
+        <a href="/admin/campaign_infos/<%= camp_info.id %>"><%= camp_info.id %></a>
       </th>
       <td class="fs-5"><%= camp_info.title %></td>
       <td class="fs-5"><%= camp_info.redirect_url %></td>

@@ -1,15 +1,22 @@
 class AppOffersController < ApplicationController
   layout  "admin"
+  before_action :require_manager
   before_action :set_app_offer, only: %i[show edit update]
   def index
-    @app_offers = AppOffer.all
+    if params[:offer_name].present?
+      @app_offers = AppOffer.where("offer_name LIKE ?", "%#{params[:offer_name]}%").order("id DESC")
+    else
+      @app_offers = AppOffer.all.order("id DESC")
+    end
   end
   def new
     @app_offer = AppOffer.new
   end
   def show
+    @events = Event.where(app_offer_id:params[:id])
   end
   def edit
+    @events = @app_offer.events.all
   end
   def create
     @app_offer = AppOffer.new(app_offer_params)

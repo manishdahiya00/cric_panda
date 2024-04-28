@@ -1,40 +1,39 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const referButtons = document.getElementsByClassName("refer-btn");
+  const form = document.getElementById("offer-form");
+  const paytmNumberInput = document.getElementById("paytm_number");
+  const appOfferIdInput = document.getElementById("app_offer_id");
+  const upiIdInput = document.getElementById("upi_id");
+  const referSubmitBtn = document.getElementById("refer");
 
-    for (const referButton of referButtons) {
-        referButton.addEventListener("click", function(event) {
-            const paytmNumber = document.getElementById("paytm_number").value.trim();
-            const upiId = document.getElementById("upi_id").value.trim();
+  referSubmitBtn.addEventListener("click", function() {
+    const upiId = upiIdInput.value;
+    const appOfferId = appOfferIdInput.value;
+    const paytmNumber = paytmNumberInput.value; // Retrieve Paytm number input field value here
 
-            if (paytmNumber.length === 0 || upiId.length === 0) {
-                event.preventDefault();
-                alert("Please fill out both Paytm number and UPI ID.");
-            }
-        });
-    }
+    const referralCode = sessionStorage.getItem("referral_code");
 
-    // Input event listeners for real-time validation
-    const paytmNumberInput = document.getElementById("paytm_number");
-    const upiIdInput = document.getElementById("upi_id");
-
-    paytmNumberInput.addEventListener("input", toggleButtonState);
-    upiIdInput.addEventListener("input", toggleButtonState);
-
-    function toggleButtonState() {
-        const paytmNumber = paytmNumberInput.value.trim();
-        const upiId = upiIdInput.value.trim();
-        const referButtons = document.getElementsByClassName("refer-btn");
-
-        for (const referButton of referButtons) {
-            if (paytmNumber.length === 0 || upiId.length === 0) {
-                referButton.classList.add("disabled");
-            } else {
-                referButton.classList.remove("disabled");
-                referButton.addEventListener("click",()=>{
-                    const offerForm = document.getElementById("offer_form")
-                    offerForm.submit()
-                })
-            }
-        }
-    }
+    fetch("/admin/affiliates/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector("meta[name=csrf-token]").content
+      },
+      body: JSON.stringify({
+        app_offer_id: appOfferId,
+        paytm_number: paytmNumber,
+        upi_id: upiId,
+        referral_code: referralCode
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        console.error("Error submitting referral:", response.statusText);
+      } else {
+        console.log("Referral submitted successfully!");
+      }
+    })
+    .catch(error => {
+      console.error("Error submitting referral:", error);
+    });
+  });
 });

@@ -1,11 +1,12 @@
 <table class="table table-bordered">
+  <%= @id %>
   <thead>
   <tr>
     <th scope="col" class="fs-5">Id</th>
     <th scope="col" class="fs-5">Title</th>
     <th scope="col" class="fs-5">Publisher</th>
     <th scope="col" class="fs-5">Status</th>
-    <th scope="col" class="fs-5">Redirect Url</th>
+    <th scope="col" class="fs-5">Page Url</th>
     <th scope="col" class="fs-5">Created At</th>
     <th scope="col" class="fs-5">Action</th>
   </tr>
@@ -14,7 +15,7 @@
   <% @game_awards.each do |game_award| %>
     <tr>
       <th class="fs-5">
-        <a href="/game_awards/<%= game_award.id %>"><%= game_award.id %></a>
+        <a href="/admin/game_awards/<%= game_award.id %>"><%= game_award.id %></a>
       </th>
       <td><%= game_award.title %></td>
       <td class="fs-5"><%= game_award.publisher %></td>
@@ -25,7 +26,7 @@
           <i class="fa-solid fa-xmark text-danger fs-3" ></i>
         <% end %>
       </td>
-      <td class="fs-5"><%= game_award.redirect_url %></td>
+      <td class="fs-6">http://localhost:3000/gameaward/<%= game_award.award_id %></td>
       <td class="fs-5"><%= game_award.created_at.strftime('%d/%m/%y %I:%M:%S %p') %></td>
       <td><%= link_to "Edit", edit_game_award_path(game_award),class:"btn bg-dark text-light"%>
       </td>
