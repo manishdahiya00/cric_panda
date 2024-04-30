@@ -2,7 +2,7 @@ class CampaignController < ApplicationController
 before_action :require_manager
   before_action :set_campaign, only: %i[ show edit update destroy ]
   def index
-    @campaigns = Campaign.all.order("id DESC")
+    @campaigns = Campaign.all.order("id DESC").page(params[:page])
   end
   def show
   end

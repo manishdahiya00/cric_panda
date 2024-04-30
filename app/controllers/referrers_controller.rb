@@ -6,10 +6,10 @@ before_action :require_manager
 
   def index
     if params[:paytm_number].present?
-    @referrers = Referrer.where("paytm_number LIKE ?", "%#{params[:paytm_number]}%").order("id DESC")
+    @referrers = Referrer.where("paytm_number LIKE ?", "%#{params[:paytm_number]}%").order("id DESC").page(params[:page])
     @app_offers = AppOffer
     else
-    @referrers = Referrer.all.order("created_at DESC").order("id DESC")
+    @referrers = Referrer.all.order("created_at DESC").order("id DESC").page(params[:page])
     @app_offers = AppOffer
     end
   end

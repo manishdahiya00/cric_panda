@@ -4,9 +4,9 @@ before_action :require_manager
   before_action :set_article, only: %i[ show edit update destroy ]
   def index
      if params[:title].present?
-      @articles = Article.where("title LIKE ?", "%#{params[:title]}%").order("id DESC")
+      @articles = Article.where("title LIKE ?", "%#{params[:title]}%").order("id DESC").page(params[:page])
     else
-    @articles = Article.all.order("id DESC")
+    @articles = Article.all.order("id DESC").page(params[:page])
     end
   end
   def show

@@ -3,7 +3,7 @@ class AppBannersController < ApplicationController
   before_action :require_manager
   before_action :set_app_banner, only: %i[ show edit update destroy ]
   def index
-    @app_banners = AppBanner.all.order("id DESC")
+    @app_banners = AppBanner.all.order("id DESC").page(params[:page])
   end
   def show
   end

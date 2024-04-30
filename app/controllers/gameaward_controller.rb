@@ -1,6 +1,6 @@
 class GameawardController < ApplicationController
 	def index
-		@gameAward = GameAward.find_by(award_id:params[:award_id])
+		@gameAward = GameAward.find_by(award_id:params[:award_id]).page(params[:page])
 	end
 	def new
 		@gameReward = GameReward.new

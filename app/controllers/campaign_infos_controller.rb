@@ -5,9 +5,9 @@ before_action :require_manager
   before_action :set_campaign_info, only: %i[ show edit update destroy ]
   def index
     if params[:title].present?
-      @campaign_infos = CampaignInfo.where("title LIKE ?", "%#{params[:title]}%").order("id DESC")
+      @campaign_infos = CampaignInfo.where("title LIKE ?", "%#{params[:title]}%").order("id DESC").page(params[:page])
     else
-    @campaign_infos = CampaignInfo.all.order("id DESC")
+    @campaign_infos = CampaignInfo.all.order("id DESC").page(params[:page])
     end
   end
   def show

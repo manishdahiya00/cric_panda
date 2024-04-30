@@ -5,9 +5,9 @@ before_action :require_manager
   before_action :set_game_award, only: %i[ show edit update destroy ]
   def index
     if params[:title].present?
-      @game_awards = GameAward.where("title LIKE ?", "%#{params[:title]}%").order("id DESC")
+      @game_awards = GameAward.where("title LIKE ?", "%#{params[:title]}%").order("id DESC").page(params[:page])
     else
-    @game_awards = GameAward.all.order("id DESC").order("id DESC")
+    @game_awards = GameAward.all.order("id DESC").order("id DESC").page(params[:page])
     @id = @award_id
     end
   end

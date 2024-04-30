@@ -4,9 +4,9 @@ class AppOffersController < ApplicationController
   before_action :set_app_offer, only: %i[show edit update]
   def index
     if params[:offer_name].present?
-      @app_offers = AppOffer.where("offer_name LIKE ?", "%#{params[:offer_name]}%").order("id DESC")
+      @app_offers = AppOffer.where("offer_name LIKE ?", "%#{params[:offer_name]}%").order("id DESC").page(params[:page])
     else
-      @app_offers = AppOffer.all.order("id DESC")
+      @app_offers = AppOffer.all.order("id DESC").page(params[:page])
     end
   end
   def new

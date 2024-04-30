@@ -5,9 +5,9 @@ class ListRedeemsController < ApplicationController
 
   def index
     if params[:paytm_number].present?
-      @app_redeems = AppRedeem.where("pay_phone LIKE ?", "%#{params[:paytm_number]}%").order("created_at DESC")
+      @app_redeems = AppRedeem.where("pay_phone LIKE ?", "%#{params[:paytm_number]}%").order("created_at DESC").page(params[:page])
     else
-      @app_redeems = AppRedeem.all.order("created_at DESC")
+      @app_redeems = AppRedeem.all.order("created_at DESC").page(params[:page])
     end
   end
 

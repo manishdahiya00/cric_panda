@@ -5,7 +5,7 @@ class AffiliatesController < ApplicationController
   before_action :require_manager
 
   def index
-    @affiliates = Affiliate.all
+    @affiliates = Affiliate.all.page(params[:page])
   end
   def show
   end

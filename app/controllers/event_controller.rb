@@ -1,7 +1,7 @@
 class EventController < ApplicationController
   layout "admin"
   def index
-    @events = Event.all.order("id DESC")
+    @events = Event.all.order("id DESC").page(params[:page])
   end
   def show
   end
