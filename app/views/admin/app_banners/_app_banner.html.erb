@@ -1,0 +1,33 @@
+ <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" class="fs-5">Id</th>
+      <th scope="col" class="fs-5">Image</th>
+      <th scope="col" class="fs-5">Redirect Url</th>
+      <th scope="col" class="fs-5">Status</th>
+      <th scope="col" class="fs-5">Created At</th>
+      <th scope="col" class="fs-5">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @app_banners.each do |app_banner| %>
+      <tr>
+        <th class="fs-5">
+          <a href="/admin/app_banners/<%= app_banner.id %>"><%= app_banner.id %></a>
+        </th>
+        <td><%= image_tag app_banner.image_url ,style:"width:60px"%></td>
+        <td class="fs-5"><%= app_banner.redirect_url %></td>
+        <td class="fs-5">
+          <% if app_banner.status %>
+            <i class="fa-solid fa-check text-success fs-3" ></i>
+          <% else %>
+            <i class="fa-solid fa-xmark text-danger fs-3" ></i>
+          <% end %>
+        </td>
+        <td class="fs-5"><%= app_banner.created_at.strftime('%d/%m/%y %I:%M:%S %p') %></td>
+        <td><%= link_to "Edit", edit_admin_app_banner_path(app_banner),class:"btn bg-dark text-light"%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>

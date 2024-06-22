@@ -1,0 +1,35 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="fs-5">Id</th>
+    <th scope="col" class="fs-5">Title</th>
+    <th scope="col" class="fs-5">Redirect Url</th>
+    <th scope="col" class="fs-5">Amount</th>
+    <th scope="col" class="fs-5">Status</th>
+    <th scope="col" class="fs-5">Created At</th>
+    <th scope="col" class="fs-5">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @campaign_infos.each do |camp_info| %>
+    <tr>
+      <th class="fs-5">
+        <a href="/admin/campaign_infos/<%= camp_info.id %>"><%= camp_info.id %></a>
+      </th>
+      <td class="fs-5"><%= camp_info.title %></td>
+      <td class="fs-5"><%= camp_info.redirect_url %></td>
+      <td class="fs-5"><%= camp_info.amount %></td>
+      <td class="fs-5">
+        <% if camp_info.status %>
+          <i class="fa-solid fa-check text-success fs-3" ></i>
+        <% else %>
+          <i class="fa-solid fa-xmark text-danger fs-3" ></i>
+        <% end %>
+      </td>
+      <td class="fs-5"><%= camp_info.created_at.strftime('%d/%m/%y %I:%M:%S %p') %></td>
+      <td><%= link_to "Edit", edit_admin_campaign_info_path(camp_info),class:"btn bg-dark text-light"%>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

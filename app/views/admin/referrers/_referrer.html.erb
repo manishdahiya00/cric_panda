@@ -1,0 +1,64 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="fs-5">Id</th>
+    <th scope="col" class="fs-5">Paytm No.</th>
+    <th scope="col" class="fs-5">Upi Id</th>
+    <th scope="col" class="fs-5">Affiliate Id</th>
+    <th scope="col" class="fs-5">Click Id</th>
+    <th scope="col" class="fs-5">Offer</th>
+    <th scope="col" class="fs-5">Status</th>
+    <th scope="col" class="fs-5">Created At</th>
+    <th scope="col" class="fs-5">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @referrers.each do |referrer| %>
+    <tr>
+      <th class="fs-6">
+        <a href="/admin/referrers/<%= referrer.id %>"><%= referrer.id %></a>
+      </th>
+      <td class="fs-6">
+        <%= referrer.paytm_number %>
+      </td>
+      <td class="fs-6">
+        <%= referrer.upi_id %>
+      </td>
+      <th class="fs-6">
+         <a href="/admin/affiliates/<%= referrer.affiliate_id %>"><%= referrer.affiliate_id %></a>
+      </th>
+      <td class="fs-6">
+        <%= referrer.click_id %>
+      <td class="fs-6">
+        <% if referrer.app_offer_id %>
+          <% app_offer = @app_offers.find_by(id: referrer.app_offer_id) %>
+          <% if app_offer %>
+            <a href="/admin/app_offers/<%= app_offer.id %>">
+              <%= app_offer.offer_name %>
+            </a>
+          <% else %>
+            Offer Not Found
+          <% end %>
+        <% else %>
+          No App Offer ID
+        <% end %>
+      </td>
+      <td class="fs-6">
+        <% if referrer.ref_status %>
+          <i class="fa-solid fa-check text-success fs-3" ></i>
+        <% else %>
+          <i class="fa-solid fa-xmark text-danger fs-3" ></i>
+        <% end %>
+      </td>
+     <td class="fs-6">
+       <%= referrer.created_at.strftime('%d/%m/%Y') %>
+       &nbsp;
+       <%= referrer.created_at.strftime('%I:%M:%S %p') %>
+     </td>
+      <td class="fs-5">
+        <%= link_to "Edit",edit_admin_referrer_path(referrer),class:"btn btn-dark" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

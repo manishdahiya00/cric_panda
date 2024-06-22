@@ -8,7 +8,7 @@
   <% end %>
 <div class="container d-flex flex-wrap flex-lg-nowrap justify-content-center align-items-center gap-3 p-2">
   <%= image_tag @app_offer.image_url, class:"img-thumbnail" %>
-  <%= form_with model: Referrer, url: referrers_path, class: "w-100 mt-0 ms-2", id: "offer-form" do |form| %>
+  <%= form_with model: Referrer, url: admin_referrers_path, class: "w-100 mt-0 ms-2", id: "offer-form" do |form| %>
       <%= form.hidden_field :app_offer_id,class:"form-control" ,value:params["app_offer_id"] ,id:"app_offer_id"%>
     <div class="mb-3">
       <%= form.label :paytm_number, class:"form-label fs-4 fw-medium" %>

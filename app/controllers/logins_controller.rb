@@ -1,4 +1,5 @@
-class LoginsController < ApplicationController
+module Admin
+  class LoginsController < ApplicationController
   def new
   end
 
@@ -34,4 +35,5 @@ class LoginsController < ApplicationController
         nil
       end
     end
+end
 end

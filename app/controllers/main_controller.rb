@@ -96,6 +96,7 @@ class MainController < ApplicationController
     @referral_code = session[:referral_code]
   end
   def refer
+    puts params
     @referral_code = session[:referral_code]
     @app_offer = AppOffer.find(params[:app_offer_id])
     @offer_name = @app_offer.offer_name

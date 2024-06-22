@@ -16,33 +16,36 @@ Rails.application.routes.draw do
   get 'google_login' => "logins#google_login"
   get "/gameaward/:award_id" => "gameaward#index"
   post "/gameaward/:award_id" => "gameaward#create"
-  get '/admin' => 'manager#new'
-  post '/admin' => 'manager#create'
-  get '/admin/logout' => 'manager#destroy'
+  get '/admin' => 'admin/manager#new'
+  post '/admin' => 'admin/manager#create'
+  get '/admin/logout' => 'admin/manager#destroy'
  
-  resources :campaign_infos, path: "/admin/campaign_infos"
-  resources :app_offers,     path: "/admin/app_offers"
-  resources :referrers,      path: "/admin/referrers"
-  resources :affiliates,     path: "/admin/affiliates"
-  resources :articles,       path: "/admin/articles"
-  resources :app_banners,    path: "/admin/app_banners"
-  resources :game_awards,    path: "/admin/game_awards"
+ namespace :admin do 
+
+  resources :campaign_infos
+  resources :app_offers
+  resources :referrers
+  resources :affiliates     
+  resources :articles
+  resources :app_banners
+  resources :game_awards
   resources :list_redeems
+   
+ end
 
+  get "/admin/app_offers/:app_offer_id/edit/event/new" => "admin/event#new"
+  post "/admin/app_offers/:app_offer_id/edit/event/new" => "admin/event#create"
+  get "/admin/app_offers/:app_offer_id/edit/event/:event_id/edit" => "admin/event#edit"
+  post "/admin/app_offers/:app_offer_id/edit/event/:event_id/edit" => "admin/event#update"
+  get "/admin/app_offers/:app_offer_id/edit/event/:event_id/" => "admin/event#destroy"
 
-  get "/admin/app_offers/:app_offer_id/edit/event/new" => "event#new"
-  post "/admin/app_offers/:app_offer_id/edit/event/new" => "event#create"
-  get "/admin/app_offers/:app_offer_id/edit/event/:event_id/edit" => "event#edit"
-  post "/admin/app_offers/:app_offer_id/edit/event/:event_id/edit" => "event#update"
-  get "/admin/app_offers/:app_offer_id/edit/event/:event_id/" => "event#destroy"
-
-  get "/admin/game_rewards/" => "game_rewards#index"
-  get "/admin/app_redeems/" => "list_redeems#index"
-  get "/admin/app_redeems/:id/" => "list_redeems#show"
-  get "/admin/app_redeems/:id/edit" => "list_redeems#edit"
-  post "/admin/app_redeems/:id/edit" => "list_redeems#update"
-  get "/admin/ref_user/:id" => "ref_user#show"
-  get "/admin/postbacks" => "event_postbacks#index"
+  get "/admin/game_rewards/" => "admin/game_rewards#index"
+  get "/admin/app_redeems/" => "admin/list_redeems#index"
+  get "/admin/app_redeems/:id/" => "admin/list_redeems#show"
+  get "/admin/app_redeems/:id/edit" => "admin/list_redeems#edit"
+  post "/admin/app_redeems/:id/edit" => "admin/list_redeems#update"
+  get "/admin/ref_user/:id" => "admin/ref_user#show"
+  get "/admin/postbacks" => "admin/event_postbacks#index"
 
   post "/payout" => "list_redeems#payout"
 

@@ -1,0 +1,51 @@
+ <div class="main-content container">
+    <% if notice %>
+    <div class="alert alert-success" role="alert"><%= notice %></div>
+    <% end %>
+    <div class="ms-2 mt-2">
+    </div>
+    <div class="d-lg-flex justify-content-start align-items-center gap-3">
+      <%= link_to "Back", admin_app_redeems_path,class:"btn btn-dark fw-medium" %>
+      <h1>Redeem: #<%= @app_redeem.id %></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Ref User ID</label>
+          <h2 class="form-control"><%= @app_redeem.ref_user_id %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Pay Phone</label>
+          <h2 class="form-control"><%= @app_redeem.pay_phone %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Pay Email</label>
+          <h2 class="form-control"><%= @app_redeem.pay_email %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Upi Id</label>
+          <h2 class="form-control"><%= @app_redeem.upi_id %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Pay Amount</label>
+          <h2 class="form-control"><%= @app_redeem.pay_amount %></h2>
+        </div>
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Pay Vendor</label>
+          <h2 class="form-control"><%= @app_redeem.pay_vendor %></h2>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group p-2">
+          <label class="control-label fs-5 fw-medium">Status</label>
+          <h2 class="form-control"><%= @app_redeem.status %></h2>
+        </div>
+      </div>
+    </div>
+    <div class="form-group p-2 mt-4">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to "Edit", edit_admin_list_redeem_path(@app_redeem) , class: "btn edit-save-btn text-light fw-medium w-25" %>
+      </div>
+    </div>
+  </div>

@@ -1,4 +1,5 @@
-class AppRedeemsController < ApplicationController
+module Admin
+	class AppRedeemsController < ApplicationController
 	require "json"
 	def new
 		@app_redeem = AppRedeem.new
@@ -16,4 +17,5 @@ end
 	def app_redeem_params
 		params.require(:app_redeem).permit(:ref_user_id,:pay_phone,:pay_email,:pay_type,:pay_vendor,:upi_id,:pay_coin,:pay_amount,:status)
 	end
+end
 end
